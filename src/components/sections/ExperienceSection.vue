@@ -31,10 +31,10 @@ const { t } = useI18n()
               class="relative pb-10 pl-8 last:pb-0"
             >
               <span
-                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-accent bg-surface"
+                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-cyan-ink bg-surface"
                 aria-hidden="true"
               />
-              <p class="text-sm font-semibold text-accent-ink">
+              <p class="text-sm font-semibold text-cyan-ink">
                 {{ job.start }} – {{ job.end ?? t('experience.present') }}
               </p>
               <h4 class="mt-1 font-display text-xl font-bold">

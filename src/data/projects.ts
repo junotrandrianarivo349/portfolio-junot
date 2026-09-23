@@ -2,54 +2,28 @@ import type { MessageSchema } from '@/i18n'
 
 type ProjectKey = keyof MessageSchema['projects']['items']
 
-/** How the status badge is rendered: `trusted` = renewed contract, `progress` = moving to production. */
-export type ProjectStatus = 'trusted' | 'progress' | 'confidential'
-
-export interface Project {
+export interface CaseStudy {
   id: ProjectKey
   /** Product name: never translated. */
   name: string
-  status: ProjectStatus
-  /** Technologies, as written in the CV. `REST API` is translated via skills.items.restApi. */
+  /** Technologies as written in the CV. `restApi` is translated via skills.items.restApi. */
   stack: string[]
-  /** Decorative illustration (no screenshots: client code and data are confidential). */
-  image?: string
+  image: string
+  /** Company project: code and data are confidential (changes the image caption). */
+  confidential?: boolean
 }
 
-/** The renewed client contract gets its own wide card with the sprint roadmap. */
-export const leadProject: Project = {
-  id: 'efameno',
-  name: 'e-famenoPlus',
-  status: 'trusted',
-  stack: ['Java/Android', 'PHP/Symfony', 'MySQL'],
-}
+/** Page order: the renewed direct contract first. */
+export const caseStudies: CaseStudy[] = [
+  { id: 'efameno', name: 'e-famenoPlus', stack: ['Java/Android', 'PHP/Symfony', 'MySQL'], image: '/images/projects/efamenoplus.svg' },
+  { id: 'carheav', name: 'Carheav', stack: ['Flutter', 'Vue.js', 'NestJS', 'PostgreSQL', 'restApi'], image: '/images/projects/carheav.svg' },
+  { id: 'pharmaplus', name: 'PharmaPlusLite', stack: ['Java/Android', 'PHP/Symfony', 'MySQL'], image: '/images/projects/pharmapluslite.svg', confidential: true },
+  { id: 'datapharm', name: 'DataPharm', stack: ['Vue.js', 'NestJS', 'MySQL'], image: '/images/projects/datapharm.svg', confidential: true },
+]
 
+/** e-famenoPlus direct-contract sprints: a real sequence. */
 export const sprints = [
   { id: 's1', state: 'done' },
   { id: 's2', state: 'current' },
   { id: 's3', state: 'next' },
 ] as const
-
-export const projects: Project[] = [
-  {
-    id: 'carheav',
-    name: 'Carheav',
-    status: 'progress',
-    stack: ['Flutter', 'Vue.js', 'NestJS', 'PostgreSQL', 'restApi'],
-    image: '/images/projects/carheav.svg',
-  },
-  {
-    id: 'pharmaplus',
-    name: 'PharmaPlusLite',
-    status: 'confidential',
-    stack: ['Java/Android', 'PHP/Symfony', 'MySQL'],
-    image: '/images/projects/pharmaplus.svg',
-  },
-  {
-    id: 'datapharm',
-    name: 'DataPharm',
-    status: 'confidential',
-    stack: ['Vue.js', 'NestJS', 'MySQL'],
-    image: '/images/projects/datapharm.svg',
-  },
-]

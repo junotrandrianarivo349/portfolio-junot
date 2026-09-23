@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import IconCheck from '~icons/lucide/check'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
-import StatusBadge from '@/components/ui/StatusBadge.vue'
-import TechBadge from '@/components/ui/TechBadge.vue'
-import { leadProject, projects, sprints } from '@/data/projects'
+import ContractPath from '@/components/projects/ContractPath.vue'
+import { caseStudies } from '@/data/projects'
 
 const { t } = useI18n()
 const tech = (name: string) => (name === 'restApi' ? t('skills.items.restApi') : name)
-const p = (key: string) => t(`projects.items.${key}`)
+const fields = ['problem', 'built', 'role', 'status'] as const
 </script>
 
 <template>
@@ -23,175 +21,77 @@ const p = (key: string) => t(`projects.items.${key}`)
       :intro="t('projects.intro')"
     />
 
-    <!-- Lead project: the renewed contract is the strongest proof of client trust. -->
-    <article
-      :aria-labelledby="`project-${leadProject.id}`"
-      class="grid gap-8 rounded-3xl border border-line bg-surface p-6 sm:p-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12"
-    >
-      <div>
-        <h3
-          :id="`project-${leadProject.id}`"
-          class="text-3xl font-extrabold tracking-tight"
-        >
-          {{ leadProject.name }}
-        </h3>
-        <p class="mt-1 text-muted">
-          {{ p(`${leadProject.id}.client`) }}
-        </p>
-        <StatusBadge
-          class="mt-5"
-          :status="leadProject.status"
-          :label="p(`${leadProject.id}.status`)"
-        />
-        <dl class="mt-7 space-y-5">
-          <div>
-            <dt class="text-sm font-semibold text-accent-ink">
-              {{ t('projects.problem') }}
-            </dt>
-            <dd class="mt-1">
-              {{ p(`${leadProject.id}.problem`) }}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold text-accent-ink">
-              {{ t('projects.role') }}
-            </dt>
-            <dd class="mt-1">
-              {{ p(`${leadProject.id}.role`) }}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold text-accent-ink">
-              {{ t('projects.stack') }}
-            </dt>
-            <dd class="mt-2">
-              <ul class="flex flex-wrap gap-2">
-                <li
-                  v-for="s in leadProject.stack"
-                  :key="s"
-                >
-                  <TechBadge :label="tech(s)" />
-                </li>
-              </ul>
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="rounded-2xl bg-bg p-6">
-        <p class="font-display text-lg leading-snug font-semibold">
-          {{ t('projects.items.efameno.trust') }}
-        </p>
-        <h4 class="mt-7 text-sm font-semibold text-muted">
-          {{ t('projects.items.efameno.sprintsLabel') }}
-        </h4>
-        <!-- Real sequence, so an ordered list with step markers. -->
-        <ol class="mt-4">
-          <li
-            v-for="(s, i) in sprints"
-            :key="s.id"
-            class="relative flex gap-4 pb-6 last:pb-0"
-          >
-            <span
-              v-if="i < sprints.length - 1"
-              class="absolute top-8 bottom-0 left-[0.9375rem] w-0.5"
-              :class="s.state === 'done' ? 'bg-accent' : 'bg-line'"
-              aria-hidden="true"
-            />
-            <span
-              class="relative grid size-8 shrink-0 place-items-center rounded-full text-sm font-bold"
-              :class="{
-                'bg-accent text-on-accent': s.state === 'done',
-                'border-2 border-accent bg-bg text-accent-ink': s.state === 'current',
-                'border-2 border-dashed border-muted bg-bg text-muted': s.state === 'next',
-              }"
-              aria-hidden="true"
-            >
-              <IconCheck
-                v-if="s.state === 'done'"
-                class="size-4"
-              />
-              <template v-else>{{ i + 1 }}</template>
-            </span>
-            <div class="pt-0.5">
-              <p class="font-semibold">
-                {{ t(`projects.items.efameno.sprints.${s.id}.name`) }}
-                <span
-                  class="ml-1 rounded-md px-1.5 py-0.5 text-xs font-semibold"
-                  :class="s.state === 'next' ? 'bg-raised text-fg' : 'bg-accent/15 text-accent-ink'"
-                >{{ t(`projects.items.efameno.sprints.${s.id}.state`) }}</span>
-              </p>
-              <p class="mt-1 text-sm text-muted">
-                {{ t(`projects.items.efameno.sprints.${s.id}.text`) }}
-              </p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </article>
-
-    <div
-      class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-    >
+    <div class="divide-y divide-line">
       <article
-        v-for="project in projects"
-        :key="project.id"
-        :aria-labelledby="`project-${project.id}`"
-        class="flex flex-col overflow-hidden rounded-3xl border border-line bg-surface"
+        v-for="(cs, i) in caseStudies"
+        :key="cs.id"
+        :aria-labelledby="`case-${cs.id}`"
+        class="grid gap-8 py-14 first:pt-0 last:pb-0 lg:grid-cols-12 lg:items-start lg:gap-14 lg:py-20"
       >
-        <img
-          v-if="project.image"
-          :src="project.image"
-          alt=""
-          width="480"
-          height="220"
-          loading="lazy"
-          class="aspect-[480/220] w-full object-cover"
+        <!-- Image and text alternate sides on large screens; image always first on small ones. -->
+        <figure
+          class="mx-auto w-full max-w-2xl lg:sticky lg:top-24 lg:col-span-7 lg:max-w-none"
+          :class="i % 2 === 1 ? 'lg:order-last' : ''"
         >
-        <div class="flex flex-1 flex-col p-6">
-          <h3
-            :id="`project-${project.id}`"
-            class="text-2xl font-extrabold tracking-tight"
+          <img
+            :src="cs.image"
+            :alt="t(`projects.items.${cs.id}.alt`)"
+            width="1200"
+            height="680"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[1200/680] w-full rounded-[var(--radius-panel)] border border-line"
           >
-            {{ project.name }}
+          <figcaption class="mt-2 text-xs text-muted">
+            {{ cs.confidential ? t('projects.captionConfidential') : t('projects.caption') }}
+          </figcaption>
+        </figure>
+
+        <div class="max-w-[62ch] lg:col-span-5">
+          <h3
+            :id="`case-${cs.id}`"
+            class="text-3xl font-extrabold tracking-tight sm:text-4xl"
+          >
+            {{ cs.name }}
           </h3>
-          <p class="mt-1 text-sm text-muted">
-            {{ p(`${project.id}.client`) }}
+          <p class="mt-1 text-muted">
+            {{ t(`projects.items.${cs.id}.client`) }}
           </p>
-          <StatusBadge
-            class="mt-4 self-start"
-            :status="project.status"
-            :label="p(`${project.id}.status`)"
-          />
-          <dl class="mt-5 flex-1 space-y-4 text-[0.95rem]">
-            <div>
-              <dt class="text-sm font-semibold text-accent-ink">
-                {{ t('projects.problem') }}
+
+          <dl class="mt-6 space-y-4">
+            <div
+              v-for="f in fields"
+              :key="f"
+            >
+              <dt class="text-sm font-semibold text-muted">
+                {{ t(`projects.labels.${f}`) }}
               </dt>
-              <dd class="mt-1">
-                {{ p(`${project.id}.problem`) }}
+              <dd
+                class="mt-0.5"
+                :class="f === 'status' ? 'font-semibold' : ''"
+              >
+                {{ t(`projects.items.${cs.id}.${f}`) }}
               </dd>
             </div>
             <div>
-              <dt class="text-sm font-semibold text-accent-ink">
-                {{ t('projects.role') }}
+              <dt class="sr-only">
+                {{ t('projects.labels.stack') }}
               </dt>
-              <dd class="mt-1">
-                {{ p(`${project.id}.role`) }}
+              <dd>
+                <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+                  <li
+                    v-for="s in cs.stack"
+                    :key="s"
+                    class="font-medium"
+                  >
+                    {{ tech(s) }}
+                  </li>
+                </ul>
               </dd>
             </div>
           </dl>
-          <p class="sr-only">
-            {{ t('projects.stack') }}
-          </p>
-          <ul class="mt-6 flex flex-wrap gap-2">
-            <li
-              v-for="s in project.stack"
-              :key="s"
-            >
-              <TechBadge :label="tech(s)" />
-            </li>
-          </ul>
+
+          <ContractPath v-if="cs.id === 'efameno'" />
         </div>
       </article>
     </div>

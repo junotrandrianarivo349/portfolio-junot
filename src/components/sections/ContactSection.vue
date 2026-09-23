@@ -53,27 +53,35 @@ async function copyEmail() {
         <p class="mt-5 max-w-md text-lg text-muted">
           {{ t('contact.text') }}
         </p>
-        <BaseButton
-          class="mt-8"
-          :href="t('contact.cvFile')"
-          variant="ghost"
-          download
-        >
-          <IconDownload
-            class="size-4"
-            aria-hidden="true"
-          />
-          {{ t('contact.cv') }}
-        </BaseButton>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <BaseButton :href="`mailto:${contact.email}`">
+            <IconMail
+              class="size-4"
+              aria-hidden="true"
+            />
+            {{ t('contact.emailCta') }}
+          </BaseButton>
+          <BaseButton
+            :href="t('contact.cvFile')"
+            variant="ghost"
+            download
+          >
+            <IconDownload
+              class="size-4"
+              aria-hidden="true"
+            />
+            {{ t('contact.cv') }}
+          </BaseButton>
+        </div>
       </div>
 
-      <ul class="min-w-0 self-start divide-y divide-line rounded-3xl border border-line bg-surface">
+      <ul class="min-w-0 self-start divide-y divide-line rounded-[var(--radius-panel)] border border-line bg-surface">
         <li class="flex items-center gap-2 p-2 pr-3">
           <a
             :href="`mailto:${contact.email}`"
             class="flex min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-raised"
           >
-            <span class="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-on-accent">
+            <span class="grid size-11 shrink-0 place-items-center rounded-full bg-raised text-fg">
               <IconMail
                 class="size-5"
                 aria-hidden="true"
@@ -93,7 +101,7 @@ async function copyEmail() {
           >
             <IconCheck
               v-if="copied"
-              class="size-5 text-accent-ink"
+              class="size-5 text-cyan-ink"
               aria-hidden="true"
             />
             <IconCopy

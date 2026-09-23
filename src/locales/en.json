@@ -24,24 +24,23 @@
   "hero": {
     "name": "Junot Randrianarivo",
     "title": "Full-Stack JavaScript Developer {'|'} Vue.js · NestJS · Flutter",
-    "tagline": "I ship web and mobile apps to production, including apps that keep working offline.",
+    "tagline": "I build web and mobile apps and ship them to production, including apps that keep working when the network drops.",
     "ctaProjects": "See the case studies",
     "ctaContact": "Email me",
     "photoAlt": "Portrait of Junot Randrianarivo in a blue suit",
     "facts": {
       "location": "Madagascar, GMT+3",
       "remote": "Available for remote work",
-      "language": "French and English"
+      "language": "Malagasy, French and English"
     },
     "demo": {
       "title": "Try it: an enrollment form that works offline",
-      "caption": "Interactive demo with fictional data. It is how e-famenoPlus works for field agents.",
+      "caption": "Fictional data. e-famenoPlus works this way: field agents enroll members on tablets and sync when the network returns.",
       "app": "New enrollment",
       "member": "Member",
       "commune": "Town",
       "save": "Save enrollment",
       "queueFull": "Queue full. Turn the network back on to sync.",
-      "hint": "Save an enrollment, then cut the network.",
       "network": "Network",
       "networkOn": "connected",
       "networkOff": "cut",
@@ -54,7 +53,10 @@
       "syncedList": "Sent to the server",
       "pendingItem": "pending",
       "syncedItem": "synced",
-      "offline": "Offline"
+      "offline": "Offline",
+      "hint1": "Save an enrollment.",
+      "hint2": "Cut the network and save again.",
+      "sendingItem": "sending…"
     },
     "role": "Full-Stack JavaScript Developer",
     "stack": "Vue.js · NestJS · Flutter"
@@ -108,29 +110,39 @@
     }
   },
   "projects": {
-    "title": "Client projects",
-    "intro": "Real projects in production or in progress. The code and data belong to the clients, so there are no screenshots here.",
-    "problem": "Problem solved",
-    "role": "My role",
-    "stack": "Stack",
+    "title": "Case studies",
+    "intro": "Real client projects. The code and data belong to the clients, so the illustrations use fictional data.",
+    "labels": {
+      "problem": "The problem",
+      "built": "What I built",
+      "role": "My role",
+      "status": "Status",
+      "stack": "Stack"
+    },
+    "caption": "Illustration: fictional interface and data.",
+    "captionConfidential": "Illustration with fictional data. The real code and data are confidential.",
     "items": {
       "efameno": {
         "client": "Harena health mutual (SMMEC Madagascar)",
-        "status": "Xonobox — direct contract with Harena health mutual (SMMEC), sprint 2 in progress, sprint 3 requested by the client",
-        "problem": "Digitize member enrollment and payment reimbursement for the mutual: an Android app for field agents and a web admin app for the office.",
-        "role": "Founder and developer at Xonobox. First hired through PSI Madagascar (April 2024 – January 2025), then under a direct contract with the mutual.",
-        "trust": "After the first phase, the client chose to keep working with Xonobox directly, with no intermediary, and has already asked for a third sprint.",
-        "sprintsLabel": "Direct contract roadmap",
+        "problem": "The mutual needed to enroll members and handle reimbursements in rural areas where the network is weak.",
+        "built": "An Android app for field agents that works offline on tablets and syncs over the internet when the network is back, and a web admin app for the mutual.",
+        "role": "Founder and developer at Xonobox.",
+        "status": "Direct contract with Harena mutual: sprint 2 in progress, sprint 3 requested by the client.",
+        "alt": "Illustration with fictional data: the offline enrollment form on a field agent's tablet, and the mutual's collections and reimbursements dashboard.",
+        "pathTitle": "From subcontractor to direct contract",
+        "phase1": "Phase 1: hired by PSI Madagascar",
+        "phase1Date": "April 2024 – January 2025",
+        "phase2": "Phase 2: the mutual chose to continue with Xonobox directly, with no intermediary",
         "sprints": {
           "s1": {
             "name": "Sprint 1",
             "state": "Delivered",
-            "text": "Full member enrollment management"
+            "text": "Member enrollment management"
           },
           "s2": {
             "name": "Sprint 2",
             "state": "In progress",
-            "text": "Healthcare provider management, collections and reimbursement dashboard"
+            "text": "Healthcare providers, collections and reimbursement dashboard"
           },
           "s3": {
             "name": "Sprint 3",
@@ -141,21 +153,27 @@
       },
       "carheav": {
         "client": "Local client",
-        "status": "Xonobox — demo approved, production in preparation",
-        "problem": "A ride-hailing platform: a rider app, a driver app and a web back office to manage rides, users and vehicles.",
-        "role": "Built at Xonobox: the two Flutter mobile apps, the Vue.js back office and the NestJS REST API."
+        "problem": "A local client needed a complete ride-hailing platform.",
+        "built": "A rider app, a driver app and a web back office to manage rides, users and vehicles.",
+        "role": "Built at Xonobox: Flutter mobile apps, Vue.js back office, NestJS REST API.",
+        "status": "Demo approved by the client, production launch in preparation.",
+        "alt": "Illustration with fictional data: a rider app showing a route on a map, a driver app with a ride request, and a back office listing rides, users and vehicles."
       },
       "pharmaplus": {
-        "client": "PSI Madagascar",
-        "status": "Company project (Sunsoft-Sunrise) — confidential",
-        "problem": "Sales and inventory management for medicine depots.",
-        "role": "Development and maintenance of the Android mobile app and the Symfony web app."
+        "client": "PSI Madagascar, at Sunsoft-Sunrise",
+        "problem": "Medicine depots needed to track their sales and stock.",
+        "built": "An Android mobile app and a web app for sales and inventory management.",
+        "role": "Development and maintenance of both apps.",
+        "status": "Company project, in production. Code and data are confidential.",
+        "alt": "Illustration with fictional data: a depot stock table with low-stock and expiry alerts, and a quick-sale cart on a phone."
       },
       "datapharm": {
-        "client": "PSI Madagascar",
-        "status": "Company project (Sunsoft-Sunrise) — confidential",
-        "problem": "A web application that centralizes medicine management for pharmacies in Madagascar.",
-        "role": "Front-end and back-end development."
+        "client": "PSI Madagascar, at Sunsoft-Sunrise",
+        "problem": "Pharmacies across Madagascar needed one place to manage their medicines.",
+        "built": "A web application that centralizes medicine management for pharmacies.",
+        "role": "Front-end and back-end development.",
+        "status": "Company project. Code and data are confidential.",
+        "alt": "Illustration: pharmacies connected to a central medicine reference."
       }
     }
   },
@@ -198,10 +216,11 @@
     "whatsappMessage": "Hello Junot, I found you through your portfolio.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "cv": "Download my CV (PDF)",
+    "cv": "Download my CV",
     "cvFile": "/cv-en.pdf",
     "copy": "Copy email address",
-    "copied": "Email address copied"
+    "copied": "Email address copied",
+    "emailCta": "Email me"
   },
   "footer": {
     "rights": "© {year} Junot Randrianarivo",

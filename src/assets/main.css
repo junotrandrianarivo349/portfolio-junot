@@ -21,11 +21,6 @@
   --color-laterite: var(--laterite);         /* offline state marks (graphical, ≥ 3:1 on every surface) */
   --color-laterite-ink: var(--laterite-ink); /* laterite used as text: 6.0 / 5.5 */
 
-  /* Legacy aliases, removed once every section is migrated. */
-  --color-accent: #22d3ee;
-  --color-accent-ink: var(--cyan-ink);
-  --color-on-accent: #0e2230;
-
   --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
 
