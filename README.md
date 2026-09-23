@@ -2,6 +2,8 @@
 
 Personal portfolio of Junot Randrianarivo, full-stack JavaScript developer (Vue.js · NestJS · Flutter) based in Madagascar, available for remote work.
 
+**Live:** https://portfolio-junot.vercel.app
+
 [![CI](https://github.com/junotrandrianarivo349/portfolio-junot/actions/workflows/ci.yml/badge.svg)](https://github.com/junotrandrianarivo349/portfolio-junot/actions/workflows/ci.yml)
 
 ## Stack
@@ -72,7 +74,7 @@ CV_Junot_Randrianarivo.md  # Single source of truth for the site content
 3. Vercel detects Vite automatically: build command `npm run build`, output directory `dist`.
 4. Every push to `main` deploys to production; other branches get preview URLs.
 
-After the first deployment, add the absolute site URL to the `og:image` and `og:url` tags in `index.html` so link previews work on every platform.
+Live site: **https://portfolio-junot.vercel.app** — if the domain changes, update the canonical, `og:url` and `og:image` URLs in `index.html`.
 
 ## License
 
