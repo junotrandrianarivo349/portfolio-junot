@@ -8,6 +8,7 @@ import AboutSection from '@/components/sections/AboutSection.vue'
 import SkillsSection from '@/components/sections/SkillsSection.vue'
 import ProjectsSection from '@/components/sections/ProjectsSection.vue'
 import ExperienceSection from '@/components/sections/ExperienceSection.vue'
+import ContactSection from '@/components/sections/ContactSection.vue'
 import { useLocaleSync } from '@/composables/useLocale'
 
 const { t } = useI18n()
@@ -32,6 +33,7 @@ useLocaleSync()
       <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
+      <ContactSection />
     </main>
     <AppFooter />
   </div>
