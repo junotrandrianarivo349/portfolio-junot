@@ -8,7 +8,7 @@ import IconWifi from '~icons/lucide/wifi'
 import IconWifiOff from '~icons/lucide/wifi-off'
 import { useSyncDemo } from '@/composables/useSyncDemo'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 // Read once on the client; during prerendering there is no window.
 const reduced = ref(false)
@@ -222,7 +222,9 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
     </button>
 
     <!-- One polite announcement per state change, not per animation frame. -->
+    <!-- Keyed by language: switching language recreates the region instead of re-announcing the same state. -->
     <p
+      :key="locale"
       class="sr-only"
       aria-live="polite"
     >

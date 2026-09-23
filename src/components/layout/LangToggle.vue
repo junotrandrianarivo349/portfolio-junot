@@ -3,16 +3,17 @@ import { useI18n } from 'vue-i18n'
 import { useLocaleToggle } from '@/composables/useLocale'
 
 const { t } = useI18n()
-const { locale, toggle } = useLocaleToggle()
+const { locale, next, to, remember } = useLocaleToggle()
 </script>
 
 <template>
-  <!-- Shows both languages; the active one is highlighted. -->
-  <button
-    type="button"
+  <!-- Link to the other language's page (works without JS). Shows both languages; the active one is highlighted. -->
+  <RouterLink
+    :to="to"
+    :hreflang="next"
     class="flex h-10 items-center gap-1 rounded-full border border-line px-3 text-sm font-semibold transition-colors hover:border-cyan-ink"
     :title="t('a11y.switchLang')"
-    @click="toggle"
+    @click="remember"
   >
     <span :class="locale === 'en' ? 'text-cyan-ink' : 'text-muted'">EN</span>
     <span
@@ -24,5 +25,5 @@ const { locale, toggle } = useLocaleToggle()
       class="sr-only"
       :lang="locale === 'en' ? 'fr' : 'en'"
     >({{ t('a11y.switchLang') }})</span>
-  </button>
+  </RouterLink>
 </template>

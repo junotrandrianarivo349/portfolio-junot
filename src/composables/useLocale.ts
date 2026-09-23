@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import type { AppLocale } from '@/i18n'
 import { LOCALE_PATHS, OG_LOCALES, SITE_URL } from '@/data/site'
@@ -46,19 +46,21 @@ export function useLocaleHead() {
   )
 }
 
-/** Switches language by changing URL (keeps the current #section) and remembers the choice. */
+/**
+ * Language switch target: the other language's page, keeping the current #section.
+ * Rendered as a real link, so it also works without JavaScript; the choice is remembered on click.
+ */
 export function useLocaleToggle() {
   const { locale } = useI18n()
   const route = useRoute()
-  const router = useRouter()
-  function toggle() {
-    const next: AppLocale = locale.value === 'en' ? 'fr' : 'en'
+  const next = computed<AppLocale>(() => (locale.value === 'en' ? 'fr' : 'en'))
+  const to = computed(() => ({ path: LOCALE_PATHS[next.value], hash: route.hash }))
+  function remember() {
     try {
-      localStorage.setItem('locale', next)
+      localStorage.setItem('locale', next.value)
     } catch {
       /* storage unavailable: the URL still carries the language */
     }
-    router.push({ path: LOCALE_PATHS[next], hash: route.hash })
   }
-  return { locale, toggle }
+  return { locale, next, to, remember }
 }

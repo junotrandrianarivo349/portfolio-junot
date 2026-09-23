@@ -22,11 +22,11 @@ export const TITLE_FR = 'Junot Randrianarivo — Développeur Full-Stack JavaScr
 /** Loads the page and waits for the Vue app to be mounted. */
 export async function gotoHome(page: Page) {
   await page.goto('/')
-  await expect(page.getByRole('button', { name: /Lire le site en français|Read the site in English/ })).toBeVisible()
+  await expect(page.getByRole('link', { name: /Lire le site en français|Read the site in English/ })).toBeVisible()
 }
 
 export function langToggle(page: Page) {
-  return page.getByRole('button', { name: /Lire le site en français|Read the site in English/ })
+  return page.getByRole('link', { name: /Lire le site en français|Read the site in English/ })
 }
 
 export function themeToggle(page: Page) {
