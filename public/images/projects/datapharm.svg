@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220">
+  <rect width="480" height="220" fill="#0c2029"/>
+  <g stroke="#2a4c5c" stroke-width="2" fill="none">
+    <path d="M240 110 90 50M240 110 70 160M240 110 170 196M240 110 330 30M240 110 400 80M240 110 410 172M240 110 150 24M240 110 300 196"/>
+  </g>
+  <g stroke="#22d3ee" stroke-width="2.5" fill="none" stroke-dasharray="5 7">
+    <path d="M240 110 90 50M240 110 400 80M240 110 300 196"/>
+  </g>
+  <g fill="#143040" stroke="#3d6474" stroke-width="2">
+    <circle cx="150" cy="24" r="12"/><circle cx="70" cy="160" r="14"/><circle cx="170" cy="196" r="11"/>
+    <circle cx="330" cy="30" r="12"/><circle cx="410" cy="172" r="14"/>
+  </g>
+  <g fill="#143040" stroke="#22d3ee" stroke-width="2.5">
+    <circle cx="90" cy="50" r="16"/><circle cx="400" cy="80" r="16"/><circle cx="300" cy="196" r="13"/>
+  </g>
+  <g stroke="#22d3ee" stroke-width="3" stroke-linecap="round">
+    <path d="M84 50h12M90 44v12M394 80h12M400 74v12M295 196h10M300 191v10"/>
+  </g>
+  <!-- central database -->
+  <g transform="translate(206 72)">
+    <path d="M0 14v48c0 8 15 14 34 14s34-6 34-14V14" fill="#10242f" stroke="#22d3ee" stroke-width="3"/>
+    <ellipse cx="34" cy="14" rx="34" ry="14" fill="#22d3ee"/>
+    <path d="M0 38c0 8 15 14 34 14s34-6 34-14" fill="none" stroke="#22d3ee" stroke-width="3"/>
+  </g>
+</svg>

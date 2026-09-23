@@ -12,7 +12,7 @@ export default defineConfigWithVueTs(
       // Section components are named after their role (HeroSection, AboutSection…), always multi-word.
       'vue/multi-word-component-names': 'off',
       // Guarantee every visible string goes through i18n.
-      'vue/no-bare-strings-in-template': ['error', { allowlist: ['·', '—', '/', '(', ')', ',', '.', ':', '+', '&', '|', 'FR', 'EN', 'JR'] }],
+      'vue/no-bare-strings-in-template': ['error', { allowlist: ['·', '—', '–', '/', '(', ')', ',', '.', ':', '+', '&', '|', 'FR', 'EN', 'JR'] }],
     },
   },
 )
