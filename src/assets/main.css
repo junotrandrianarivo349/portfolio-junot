@@ -70,9 +70,6 @@
     @apply font-display;
     text-wrap: balance;
   }
-  p {
-    text-wrap: pretty;
-  }
   :focus-visible {
     outline: 2px solid var(--color-cyan-ink); /* cyan fill is 1.6:1 on paper: use the ink variant */
     outline-offset: 3px;

@@ -4,6 +4,7 @@ import IconMail from '~icons/lucide/mail'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import SocialLinks from '@/components/ui/SocialLinks.vue'
 import SyncDemo from '@/components/hero/SyncDemo.vue'
+import TopoLines from '@/components/hero/TopoLines.vue'
 import { contact } from '@/data/contact'
 
 const { t } = useI18n()
@@ -16,10 +17,7 @@ const facts = ['location', 'remote', 'language'] as const
     class="relative isolate overflow-hidden"
   >
     <!-- Topographic lines, drawn with the theme's text colour through a mask so they work in both themes. -->
-    <div
-      class="topo pointer-events-none absolute inset-0 -z-10"
-      aria-hidden="true"
-    />
+    <TopoLines class="topo pointer-events-none absolute inset-0 -z-10 size-full text-fg" />
 
     <div class="mx-auto grid max-w-6xl items-start gap-10 px-4 pt-8 pb-20 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20 lg:pb-28">
       <div class="max-w-[40rem] lg:pt-8">
@@ -87,17 +85,12 @@ const facts = ['location', 'remote', 'language'] as const
 
 <style scoped>
 .topo {
-  /* hero-topo.svg strokes are at 14 % alpha: opacity 1 → 0.14 in dark, 0.75 → 0.1 in light. */
-  background-color: var(--color-fg);
-  opacity: 0.75;
+  /* Same look as hero-topo.svg (strokes at 14 % alpha): 0.14 in dark, 0.1 in light. */
+  opacity: 0.1;
   /* Fade out under the text column so lines never cross the headline. */
-  mask-image: url('/images/hero-topo.svg'), linear-gradient(to right, transparent 30%, #000 70%);
-  mask-composite: intersect;
-  mask-size: cover, 100% 100%;
-  mask-position: right top, 0 0;
-  mask-repeat: no-repeat;
+  mask-image: linear-gradient(to right, transparent 30%, #000 70%);
 }
 :global(.dark) .topo {
-  opacity: 1;
+  opacity: 0.14;
 }
 </style>

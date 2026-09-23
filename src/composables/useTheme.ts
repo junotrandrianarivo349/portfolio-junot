@@ -2,8 +2,9 @@ import { ref } from 'vue'
 
 type Theme = 'dark' | 'light'
 
-// Module-level state: every component calling useTheme() shares the same ref.
-const theme = ref<Theme>(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+// Module-level state shared by every component. It starts as 'dark' (the prerendered default)
+// and is synced with the <html> class after mount, so hydration never sees a different value.
+const theme = ref<Theme>('dark')
 
 function apply(value: Theme) {
   document.documentElement.classList.toggle('dark', value === 'dark')
@@ -13,6 +14,11 @@ function apply(value: Theme) {
   } catch {
     /* storage unavailable: the choice lasts for this visit only */
   }
+}
+
+/** Reads the theme set by the inline script in index.html. Call once, on mount. */
+export function syncThemeFromDocument() {
+  theme.value = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
 }
 
 export function useTheme() {
