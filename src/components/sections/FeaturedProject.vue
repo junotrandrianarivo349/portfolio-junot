@@ -17,7 +17,7 @@ const isAvailable = Boolean(featured.demoUrl || featured.codeUrl)
   >
     <div
       v-reveal
-      class="grid overflow-hidden rounded-3xl border border-accent/40 bg-surface md:grid-cols-[1.1fr_1fr]"
+      class="grid overflow-hidden rounded-3xl border border-accent/40 bg-surface lg:grid-cols-[1.1fr_1fr]"
     >
       <div class="flex flex-col p-6 sm:p-10">
         <div class="flex flex-wrap items-center gap-3">
@@ -74,7 +74,7 @@ const isAvailable = Boolean(featured.demoUrl || featured.codeUrl)
         width="640"
         height="480"
         loading="lazy"
-        class="h-full min-h-56 w-full object-cover"
+        class="aspect-[4/3] h-full max-h-96 w-full object-cover lg:max-h-none"
       >
     </div>
   </section>

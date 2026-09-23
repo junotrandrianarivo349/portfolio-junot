@@ -133,7 +133,7 @@ const p = (key: string) => t(`projects.items.${key}`)
 
     <div
       v-reveal
-      class="mt-6 grid gap-6 md:grid-cols-3"
+      class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
       <article
         v-for="project in projects"

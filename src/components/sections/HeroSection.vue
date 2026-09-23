@@ -15,11 +15,11 @@ const photoFailed = ref(false)
     aria-labelledby="hero-title"
     class="relative overflow-hidden"
   >
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 md:grid-cols-[1fr_auto] md:gap-16 md:pt-20 md:pb-24">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12 lg:gap-16 md:pt-20 md:pb-24">
       <div class="order-2 md:order-1">
         <h1
           id="hero-title"
-          class="text-[clamp(2.6rem,10.5vw,5.75rem)] leading-[0.95] font-extrabold tracking-tight"
+          class="text-[clamp(2.6rem,10.5vw,5.75rem)] leading-[0.95] md:text-[clamp(3rem,6.8vw,5.75rem)] font-extrabold tracking-tight"
         >
           {{ t('hero.name') }}
         </h1>
@@ -75,7 +75,7 @@ const photoFailed = ref(false)
       </div>
 
       <div class="order-1 justify-self-start md:order-2 md:justify-self-end">
-        <div class="relative w-36 sm:w-48 md:w-72 lg:w-80">
+        <div class="relative w-36 sm:w-48 md:w-56 lg:w-80">
           <!-- Offset frame in the accent color. -->
           <div
             class="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border-2 border-accent md:translate-x-5 md:translate-y-5"
