@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1f3d4c" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="#0c2029"/>
+  <rect width="640" height="480" fill="url(#grid)" opacity=".7"/>
+  <circle cx="470" cy="120" r="220" fill="url(#glow)"/>
+
+  <!-- Browser window -->
+  <g transform="translate(70 90)">
+    <rect width="400" height="280" rx="16" fill="#10242f" stroke="#2a4c5c" stroke-width="2"/>
+    <path d="M0 16a16 16 0 0 1 16-16h368a16 16 0 0 1 16 16v24H0z" fill="#143040"/>
+    <circle cx="22" cy="20" r="5" fill="#22d3ee"/>
+    <circle cx="40" cy="20" r="5" fill="#2a4c5c"/>
+    <circle cx="58" cy="20" r="5" fill="#2a4c5c"/>
+    <rect x="90" y="12" width="220" height="16" rx="8" fill="#0c2029"/>
+    <!-- sidebar -->
+    <rect x="20" y="60" width="90" height="200" rx="10" fill="#143040"/>
+    <rect x="34" y="78" width="60" height="8" rx="4" fill="#22d3ee"/>
+    <rect x="34" y="100" width="48" height="8" rx="4" fill="#2a4c5c"/>
+    <rect x="34" y="120" width="56" height="8" rx="4" fill="#2a4c5c"/>
+    <rect x="34" y="140" width="40" height="8" rx="4" fill="#2a4c5c"/>
+    <!-- stat tiles -->
+    <rect x="126" y="60" width="120" height="70" rx="10" fill="#143040"/>
+    <rect x="140" y="76" width="50" height="8" rx="4" fill="#3d6474"/>
+    <rect x="140" y="98" width="80" height="16" rx="5" fill="#e6f1f4" opacity=".85"/>
+    <rect x="258" y="60" width="122" height="70" rx="10" fill="#143040"/>
+    <rect x="272" y="76" width="50" height="8" rx="4" fill="#3d6474"/>
+    <rect x="272" y="98" width="64" height="16" rx="5" fill="#22d3ee"/>
+    <!-- chart -->
+    <rect x="126" y="144" width="254" height="116" rx="10" fill="#143040"/>
+    <polyline points="142,236 180,214 214,222 250,188 286,196 322,166 362,172" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M142 236 180 214 214 222 250 188 286 196 322 166 362 172V246H142z" fill="#22d3ee" opacity=".12"/>
+  </g>
+
+  <!-- Phone -->
+  <g transform="translate(420 170)">
+    <rect width="150" height="250" rx="24" fill="#10242f" stroke="#22d3ee" stroke-width="2.5"/>
+    <rect x="55" y="12" width="40" height="6" rx="3" fill="#2a4c5c"/>
+    <rect x="16" y="36" width="118" height="54" rx="10" fill="#143040"/>
+    <circle cx="38" cy="63" r="12" fill="#22d3ee" opacity=".9"/>
+    <rect x="58" y="54" width="60" height="7" rx="3.5" fill="#e6f1f4" opacity=".8"/>
+    <rect x="58" y="68" width="40" height="7" rx="3.5" fill="#3d6474"/>
+    <rect x="16" y="102" width="118" height="30" rx="8" fill="#143040"/>
+    <rect x="16" y="140" width="118" height="30" rx="8" fill="#143040"/>
+    <rect x="16" y="178" width="118" height="30" rx="8" fill="#143040"/>
+    <rect x="28" y="113" width="70" height="8" rx="4" fill="#3d6474"/>
+    <rect x="28" y="151" width="54" height="8" rx="4" fill="#3d6474"/>
+    <rect x="28" y="189" width="62" height="8" rx="4" fill="#3d6474"/>
+    <rect x="40" y="220" width="70" height="16" rx="8" fill="#22d3ee"/>
+  </g>
+
+  <!-- Code brackets badge -->
+  <g transform="translate(70 396)">
+    <rect width="176" height="44" rx="22" fill="#143040" stroke="#2a4c5c" stroke-width="1.5"/>
+    <path d="M28 14 18 22l10 8M44 14l10 8-10 8" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="70" y="18" width="86" height="8" rx="4" fill="#3d6474"/>
+  </g>
+</svg>

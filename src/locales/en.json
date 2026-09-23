@@ -24,7 +24,7 @@
   },
   "hero": {
     "name": "Junot Randrianarivo",
-    "title": "Full-Stack JavaScript Developer | Vue.js · NestJS · Flutter",
+    "title": "Full-Stack JavaScript Developer {'|'} Vue.js · NestJS · Flutter",
     "tagline": "I build web and mobile apps and take them all the way to production: Linux servers, Docker, CI/CD.",
     "ctaProjects": "See my projects",
     "ctaContact": "Contact me",

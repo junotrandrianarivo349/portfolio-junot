@@ -2,6 +2,8 @@
 import { useI18n } from 'vue-i18n'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
+import HeroSection from '@/components/sections/HeroSection.vue'
+import FeaturedProject from '@/components/sections/FeaturedProject.vue'
 import { useLocaleSync } from '@/composables/useLocale'
 
 const { t } = useI18n()
@@ -19,7 +21,10 @@ useLocaleSync()
       id="main"
       tabindex="-1"
       class="outline-none"
-    />
+    >
+      <HeroSection />
+      <FeaturedProject />
+    </main>
     <AppFooter />
   </div>
 </template>
