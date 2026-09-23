@@ -6,7 +6,7 @@ export const contact = {
   whatsapp: '261344002145',
   // TODO(Junot): add your profile URLs. Links stay hidden while these are empty.
   github: '',
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/junot-randrianarivo-b19143196/',
   /** Public repository of this portfolio, shown in the footer once set. */
   repo: '',
 } as const
