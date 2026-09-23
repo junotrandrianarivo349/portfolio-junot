@@ -2,7 +2,7 @@
 
 Personal portfolio of Junot Randrianarivo, full-stack JavaScript developer (Vue.js · NestJS · Flutter) based in Madagascar, available for remote work.
 
-[![CI](https://github.com/junot5404/portfolio-junot/actions/workflows/ci.yml/badge.svg)](https://github.com/junot5404/portfolio-junot/actions/workflows/ci.yml)
+[![CI](https://github.com/junotrandrianarivo349/portfolio-junot/actions/workflows/ci.yml/badge.svg)](https://github.com/junotrandrianarivo349/portfolio-junot/actions/workflows/ci.yml)
 
 ## Stack
 
