@@ -8,7 +8,7 @@ const { t } = useI18n()
   <section
     id="about"
     aria-labelledby="about-title"
-    class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
+    class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"
   >
     <div class="grid gap-10 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-14 lg:grid-cols-[16rem_minmax(0,1fr)]">
       <picture>

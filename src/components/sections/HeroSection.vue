@@ -65,7 +65,7 @@ const facts = ['location', 'remote', 'language'] as const
           >
           <img
             src="/images/avatar.jpg"
-            :alt="t('hero.photoAlt')"
+            alt=""
             width="128"
             height="128"
             fetchpriority="high"

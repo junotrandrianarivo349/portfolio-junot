@@ -23,6 +23,29 @@ test.describe('contact links', () => {
     await expect(page.locator('a[href="/cv-en.pdf"]')).toHaveCount(0)
   })
 
+  test('contact CTAs: "Email me" mailto and "Download my CV", in both languages', async ({ page }) => {
+    await gotoHome(page)
+    const cases = [
+      { email: 'Email me', cv: 'Download my CV (PDF, 205 KB)', file: '/cv-en.pdf' },
+      { email: "M'écrire un email", cv: 'Télécharger mon CV (PDF, 209 Ko)', file: '/cv-fr.pdf' },
+    ]
+    for (const [i, c] of cases.entries()) {
+      if (i === 1) {
+        await langToggle(page).click()
+        await expect(page.locator('html')).toHaveAttribute('lang', 'fr')
+      }
+      const section = page.locator('#contact')
+      const email = section.getByRole('link', { name: c.email, exact: true })
+      await expect(email).toHaveAttribute('href', 'mailto:junotrandrianarivo5404@gmail.com')
+      const cv = section.getByRole('link', { name: c.cv, exact: true })
+      await expect(cv).toHaveAttribute('href', c.file)
+      await expect(cv).toHaveAttribute('download', /.*/)
+      await cv.scrollIntoViewIfNeeded()
+      await expect(email).toBeVisible()
+      await expect(cv).toBeVisible()
+    }
+  })
+
   for (const file of ['/cv-en.pdf', '/cv-fr.pdf']) {
     test(`${file} is served`, async ({ request }) => {
       const res = await request.get(file)

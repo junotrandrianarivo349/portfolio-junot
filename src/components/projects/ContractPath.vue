@@ -9,18 +9,27 @@ const k = (key: string) => t(`projects.items.efameno.${key}`)
 
 <template>
   <!-- The shift from subcontractor to direct client, then renewed sprints: the proof of trust. -->
-  <div class="mt-8 border-t border-line pt-6">
+  <div class="rounded-[var(--radius-panel)] border border-line p-5 sm:p-6">
     <h4 class="text-base font-bold">
       {{ k('pathTitle') }}
     </h4>
-    <ol class="mt-4 space-y-4">
-      <li class="text-sm text-muted">
-        <span class="font-semibold text-fg">{{ k('phase1') }}</span>
-        <span class="block">{{ k('phase1Date') }}</span>
+    <ol class="mt-4 space-y-5 border-l-2 border-line pl-5">
+      <li class="relative text-sm">
+        <span
+          class="absolute top-1.5 -left-[1.6875rem] size-3 rounded-full bg-line"
+          aria-hidden="true"
+        />
+        <span class="font-semibold">{{ k('phase1') }}</span>
+        <span class="text-muted">, {{ k('phase1Date') }}</span>
+        <span class="mt-1 block max-w-[70ch] text-muted">{{ k('phase1Done') }}</span>
       </li>
-      <li class="text-sm">
+      <li class="relative text-sm">
+        <span
+          class="absolute top-1.5 -left-[1.6875rem] size-3 rounded-full bg-cyan-ink"
+          aria-hidden="true"
+        />
         <span class="font-semibold">{{ k('phase2') }}</span>
-        <ol class="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
+        <ol class="mt-3 grid gap-2 sm:grid-cols-3">
           <li
             v-for="(s, i) in sprints"
             :key="s.id"

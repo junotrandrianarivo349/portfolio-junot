@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import IconMail from '~icons/lucide/mail'
 import IconCopy from '~icons/lucide/copy'
@@ -23,15 +23,28 @@ const channels = computed(() =>
 
 // Copy-to-clipboard: useful when the visitor has no mail client configured.
 const copied = ref(false)
+const copyStatus = ref('')
+let copyTimer: ReturnType<typeof setTimeout> | undefined
 async function copyEmail() {
+  clearTimeout(copyTimer)
+  copyStatus.value = '' // cleared first so a repeated click is announced again
   try {
     await navigator.clipboard.writeText(contact.email)
     copied.value = true
-    setTimeout(() => (copied.value = false), 2500)
+    await nextTick()
+    copyStatus.value = t('contact.copied')
   } catch {
-    /* clipboard blocked: the mailto link remains available */
+    copied.value = false
+    await nextTick()
+    copyStatus.value = t('contact.copyFail')
   }
+  copyTimer = setTimeout(() => {
+    copied.value = false
+    copyStatus.value = ''
+  }, 2500)
 }
+// Break the address only after the "@" on narrow screens.
+const [emailUser, emailDomain] = contact.email.split('@')
 </script>
 
 <template>
@@ -71,6 +84,7 @@ async function copyEmail() {
               aria-hidden="true"
             />
             {{ t('contact.cv') }}
+            <span class="font-normal opacity-80">({{ t('contact.cvMeta') }})</span>
           </BaseButton>
         </div>
       </div>
@@ -79,7 +93,7 @@ async function copyEmail() {
         <li class="flex items-center gap-2 p-2 pr-3">
           <a
             :href="`mailto:${contact.email}`"
-            class="flex min-w-0 flex-1 items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-raised"
+            class="group flex min-w-0 flex-1 items-center gap-4 rounded-[var(--radius-panel)] p-3"
           >
             <span class="grid size-11 shrink-0 place-items-center rounded-full bg-raised text-fg">
               <IconMail
@@ -89,7 +103,7 @@ async function copyEmail() {
             </span>
             <span class="min-w-0">
               <span class="block text-sm text-muted">{{ t('contact.email') }}</span>
-              <span class="block font-semibold break-all">{{ contact.email }}</span>
+              <span class="block font-semibold group-hover:underline">{{ emailUser }}<wbr>@{{ emailDomain }}</span>
             </span>
           </a>
           <button
@@ -113,7 +127,7 @@ async function copyEmail() {
           <span
             class="sr-only"
             role="status"
-          >{{ copied ? t('contact.copied') : '' }}</span>
+          >{{ copyStatus }}</span>
         </li>
         <li
           v-for="c in channels"
@@ -124,7 +138,7 @@ async function copyEmail() {
             :href="c.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-raised"
+            class="group flex items-center gap-4 rounded-[var(--radius-panel)] p-3"
           >
             <span class="grid size-11 shrink-0 place-items-center rounded-full bg-raised text-fg">
               <component
@@ -135,7 +149,7 @@ async function copyEmail() {
             </span>
             <span class="min-w-0">
               <span class="block text-sm text-muted">{{ t(`contact.${c.id}`) }}<span class="sr-only"> ({{ t('a11y.newTab') }})</span></span>
-              <span class="block truncate font-semibold">{{ c.value }}</span>
+              <span class="block truncate font-semibold group-hover:underline">{{ c.value }}</span>
             </span>
           </a>
         </li>

@@ -83,7 +83,7 @@
       },
       "devops": {
         "title": "Docker & CI/CD",
-        "text": "Docker containers and GitHub Actions pipelines: each change is built and checked automatically."
+        "text": "Docker containers and CI/CD pipelines with GitHub Actions."
       },
       "offline": {
         "title": "Offline-first (PowerSync)",
@@ -128,7 +128,7 @@
         "built": "An Android app for field agents that works offline on tablets and syncs over the internet when the network is back, and a web admin app for the mutual.",
         "role": "Founder and developer at Xonobox.",
         "status": "Direct contract with Harena mutual: sprint 2 in progress, sprint 3 requested by the client.",
-        "alt": "Illustration with fictional data: the offline enrollment form on a field agent's tablet, and the mutual's collections and reimbursements dashboard.",
+        "alt": "The offline enrollment form on a field agent's tablet, and the mutual's collections and reimbursements dashboard (interface in French).",
         "pathTitle": "From subcontractor to direct contract",
         "phase1": "Phase 1: hired by PSI Madagascar",
         "phase1Date": "April 2024 – January 2025",
@@ -149,7 +149,8 @@
             "state": "Requested by the client",
             "text": "Financial management of the mutual"
           }
-        }
+        },
+        "phase1Done": "Delivered: digital member enrollment and payment reimbursement, with an Android app for field agents and a web admin app."
       },
       "carheav": {
         "client": "Local client",
@@ -157,15 +158,15 @@
         "built": "A rider app, a driver app and a web back office to manage rides, users and vehicles.",
         "role": "Built at Xonobox: Flutter mobile apps, Vue.js back office, NestJS REST API.",
         "status": "Demo approved by the client, production launch in preparation.",
-        "alt": "Illustration with fictional data: a rider app showing a route on a map, a driver app with a ride request, and a back office listing rides, users and vehicles."
+        "alt": "A rider app showing a route on a map, a driver app with a ride request, and a back office listing rides, users and vehicles (interface in French)."
       },
       "pharmaplus": {
         "client": "PSI Madagascar, at Sunsoft-Sunrise",
         "problem": "Medicine depots needed to track their sales and stock.",
         "built": "An Android mobile app and a web app for sales and inventory management.",
         "role": "Development and maintenance of both apps.",
-        "status": "Company project, in production. Code and data are confidential.",
-        "alt": "Illustration with fictional data: a depot stock table with low-stock and expiry alerts, and a quick-sale cart on a phone."
+        "status": "Company project. Code and data are confidential.",
+        "alt": "A depot stock table with low-stock and expiry alerts, and a quick-sale cart on a phone (interface in French)."
       },
       "datapharm": {
         "client": "PSI Madagascar, at Sunsoft-Sunrise",
@@ -173,7 +174,7 @@
         "built": "A web application that centralizes medicine management for pharmacies.",
         "role": "Front-end and back-end development.",
         "status": "Company project. Code and data are confidential.",
-        "alt": "Illustration: pharmacies connected to a central medicine reference."
+        "alt": "Pharmacies connected to a central medicine reference."
       }
     }
   },
@@ -220,7 +221,9 @@
     "cvFile": "/cv-en.pdf",
     "copy": "Copy email address",
     "copied": "Email address copied",
-    "emailCta": "Email me"
+    "emailCta": "Email me",
+    "cvMeta": "PDF, 205 KB",
+    "copyFail": "Copy failed. Use the email link instead."
   },
   "footer": {
     "rights": "© {year} Junot Randrianarivo",

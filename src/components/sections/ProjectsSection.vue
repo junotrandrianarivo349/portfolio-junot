@@ -66,10 +66,7 @@ const fields = ['problem', 'built', 'role', 'status'] as const
               <dt class="text-sm font-semibold text-muted">
                 {{ t(`projects.labels.${f}`) }}
               </dt>
-              <dd
-                class="mt-0.5"
-                :class="f === 'status' ? 'font-semibold' : ''"
-              >
+              <dd class="mt-0.5">
                 {{ t(`projects.items.${cs.id}.${f}`) }}
               </dd>
             </div>
@@ -90,9 +87,12 @@ const fields = ['problem', 'built', 'role', 'status'] as const
               </dd>
             </div>
           </dl>
-
-          <ContractPath v-if="cs.id === 'efameno'" />
         </div>
+
+        <ContractPath
+          v-if="cs.id === 'efameno'"
+          class="lg:col-span-12"
+        />
       </article>
     </div>
   </section>

@@ -52,7 +52,7 @@ const label = (skill: Skill) => (skill.key ? t(`skills.items.${skill.key}`) : sk
             {{ t(`skills.categories.${cat.id}`) }}
           </dt>
           <dd class="mt-1">
-            <ul class="flex flex-wrap gap-x-3 gap-y-0.5">
+            <ul class="skill-list flex flex-wrap gap-y-0.5">
               <li
                 v-for="skill in cat.items"
                 :key="skill.key ?? skill.name"
@@ -67,3 +67,13 @@ const label = (skill: Skill) => (skill.key ? t(`skills.items.${skill.key}`) : sk
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Middle dot between items so neighbouring names never read as one. */
+.skill-list li:not(:last-child)::after {
+  content: '·';
+  margin-inline: 0.5rem;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+</style>

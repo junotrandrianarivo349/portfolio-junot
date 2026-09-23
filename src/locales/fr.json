@@ -83,7 +83,7 @@
       },
       "devops": {
         "title": "Docker & CI/CD",
-        "text": "Conteneurs Docker et pipelines GitHub Actions : chaque modification est construite et vérifiée automatiquement."
+        "text": "Conteneurs Docker et pipelines CI/CD avec GitHub Actions."
       },
       "offline": {
         "title": "Offline-first (PowerSync)",
@@ -128,7 +128,7 @@
         "built": "Une application Android pour les agents de terrain, qui fonctionne hors ligne sur tablette et se synchronise via Internet quand le réseau revient, et une application web d'administration pour la mutuelle.",
         "role": "Fondateur et développeur chez Xonobox.",
         "status": "Contrat direct avec la Mutuelle Harena : sprint 2 en cours, sprint 3 demandé par le client.",
-        "alt": "Illustration aux données fictives : le formulaire d'adhésion hors ligne sur la tablette d'un agent de terrain, et le tableau de bord de recouvrement et de remboursement de la mutuelle.",
+        "alt": "Le formulaire d'adhésion hors ligne sur la tablette d'un agent de terrain, et le tableau de bord de recouvrement et de remboursement de la mutuelle.",
         "pathTitle": "De sous-traitant à contrat direct",
         "phase1": "Phase 1 : engagé par PSI Madagascar",
         "phase1Date": "avril 2024 – janvier 2025",
@@ -149,7 +149,8 @@
             "state": "Demandé par le client",
             "text": "Gestion financière de la mutuelle"
           }
-        }
+        },
+        "phase1Done": "Livré : digitalisation de l'adhésion des membres et du remboursement des paiements, avec une application Android pour les agents de terrain et une application web d'administration."
       },
       "carheav": {
         "client": "Client local",
@@ -157,15 +158,15 @@
         "built": "Une application passager, une application chauffeur et un back-office web pour gérer les courses, les utilisateurs et les véhicules.",
         "role": "Réalisé chez Xonobox : applications mobiles Flutter, back-office Vue.js, API REST NestJS.",
         "status": "Démo validée par le client, mise en production en préparation.",
-        "alt": "Illustration aux données fictives : une application passager avec un trajet sur une carte, une application chauffeur avec une demande de course, et un back-office listant courses, utilisateurs et véhicules."
+        "alt": "Une application passager avec un trajet sur une carte, une application chauffeur avec une demande de course, et un back-office listant courses, utilisateurs et véhicules."
       },
       "pharmaplus": {
         "client": "PSI Madagascar, chez Sunsoft-Sunrise",
         "problem": "Les dépôts de médicaments devaient suivre leurs ventes et leur stock.",
         "built": "Une application mobile Android et une application web de gestion des ventes et du stock.",
         "role": "Développement et maintenance des deux applications.",
-        "status": "Projet d'entreprise, en production. Code et données confidentiels.",
-        "alt": "Illustration aux données fictives : un tableau de stock de dépôt avec alertes de stock bas et de péremption, et un panier de vente rapide sur téléphone."
+        "status": "Projet d'entreprise. Code et données confidentiels.",
+        "alt": "Un tableau de stock de dépôt avec alertes de stock bas et de péremption, et un panier de vente rapide sur téléphone."
       },
       "datapharm": {
         "client": "PSI Madagascar, chez Sunsoft-Sunrise",
@@ -173,7 +174,7 @@
         "built": "Une application web qui centralise la gestion des médicaments des pharmacies.",
         "role": "Développement front-end et back-end.",
         "status": "Projet d'entreprise. Code et données confidentiels.",
-        "alt": "Illustration : des pharmacies reliées à un référentiel central de médicaments."
+        "alt": "Des pharmacies reliées à un référentiel central de médicaments."
       }
     }
   },
@@ -220,7 +221,9 @@
     "cvFile": "/cv-fr.pdf",
     "copy": "Copier l'adresse email",
     "copied": "Adresse email copiée",
-    "emailCta": "M'écrire un email"
+    "emailCta": "M'écrire un email",
+    "cvMeta": "PDF, 209 Ko",
+    "copyFail": "Copie impossible. Utilisez le lien email."
   },
   "footer": {
     "rights": "© {year} Junot Randrianarivo",

@@ -10,7 +10,7 @@ const { t } = useI18n()
   <section
     id="experience"
     aria-labelledby="experience-title"
-    class="border-y border-line bg-surface"
+    class=""
   >
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <SectionTitle
@@ -31,7 +31,7 @@ const { t } = useI18n()
               class="relative pb-10 pl-8 last:pb-0"
             >
               <span
-                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-cyan-ink bg-surface"
+                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-cyan-ink bg-bg"
                 aria-hidden="true"
               />
               <p class="text-sm font-semibold text-cyan-ink">
