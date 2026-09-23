@@ -6,7 +6,8 @@
 
 ## Contact
 
-- Téléphone / WhatsApp : +261 34 40 021 45
+- Téléphone : +261 34 40 021 45
+- WhatsApp : +261 34 71 335 79
 - Email : junotrandrianarivo5404@gmail.com
 - Adresse : Antananarivo 102, Madagascar
 - LinkedIn : Junot Randrianarivo
