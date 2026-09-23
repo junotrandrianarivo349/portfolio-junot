@@ -4,6 +4,8 @@ import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import HeroSection from '@/components/sections/HeroSection.vue'
 import FeaturedProject from '@/components/sections/FeaturedProject.vue'
+import AboutSection from '@/components/sections/AboutSection.vue'
+import SkillsSection from '@/components/sections/SkillsSection.vue'
 import { useLocaleSync } from '@/composables/useLocale'
 
 const { t } = useI18n()
@@ -24,6 +26,8 @@ useLocaleSync()
     >
       <HeroSection />
       <FeaturedProject />
+      <AboutSection />
+      <SkillsSection />
     </main>
     <AppFooter />
   </div>
