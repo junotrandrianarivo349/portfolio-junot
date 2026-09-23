@@ -15,36 +15,49 @@
     "home": "Junot Randrianarivo, retour en haut"
   },
   "nav": {
-    "featured": "Démo",
     "about": "À propos",
     "skills": "Compétences",
-    "projects": "Projets",
-    "experience": "Expérience",
+    "projects": "Études de cas",
+    "experience": "Parcours",
     "contact": "Contact"
   },
   "hero": {
     "name": "Junot Randrianarivo",
     "title": "Développeur Full-Stack JavaScript {'|'} Vue.js · NestJS · Flutter",
-    "tagline": "Je conçois des applications web et mobiles et je les mène jusqu'en production : serveurs Linux, Docker, CI/CD.",
-    "ctaProjects": "Voir mes projets",
-    "ctaContact": "Me contacter",
+    "tagline": "Je livre des applications web et mobiles en production, y compris des applications qui fonctionnent hors ligne.",
+    "ctaProjects": "Voir les études de cas",
+    "ctaContact": "M'écrire un email",
     "photoAlt": "Portrait de Junot Randrianarivo en costume bleu",
-    "pipelineLabel": "Ma façon de travailler : du code à la production",
-    "pipeline": {
-      "code": "Code",
-      "build": "Build",
-      "deploy": "Déploiement",
-      "live": "En ligne"
-    }
-  },
-  "featured": {
-    "title": "Démo open source",
-    "status": "Bientôt disponible",
-    "heading": "Une application de démonstration complète, avec son code",
-    "text": "Mes projets clients sont confidentiels, alors je construis une application de démonstration publique. Elle sera disponible ici, en ligne, avec son code source sur GitHub.",
-    "demo": "Voir la démo",
-    "code": "Voir le code",
-    "unavailable": "Pas encore disponible"
+    "facts": {
+      "location": "Madagascar, GMT+3",
+      "remote": "Disponible en remote",
+      "language": "Français et anglais"
+    },
+    "demo": {
+      "title": "Essayez : un formulaire d'adhésion qui fonctionne hors ligne",
+      "caption": "Démo interactive, données fictives. C'est le principe d'e-famenoPlus pour les agents de terrain.",
+      "app": "Nouvelle adhésion",
+      "member": "Membre",
+      "commune": "Commune",
+      "save": "Enregistrer l'adhésion",
+      "queueFull": "File pleine. Rétablissez le réseau pour synchroniser.",
+      "hint": "Enregistrez une adhésion, puis coupez le réseau.",
+      "network": "Réseau",
+      "networkOn": "connecté",
+      "networkOff": "coupé",
+      "status": {
+        "synced": "Synchronisé",
+        "syncing": "Synchronisation…",
+        "pending": "En attente de réseau : {n} adhésion | En attente de réseau : {n} adhésions"
+      },
+      "pendingList": "Stockées sur l'appareil",
+      "syncedList": "Envoyées au serveur",
+      "pendingItem": "en attente",
+      "syncedItem": "synchronisée",
+      "offline": "Hors ligne"
+    },
+    "role": "Développeur Full-Stack JavaScript",
+    "stack": "Vue.js · NestJS · Flutter"
   },
   "about": {
     "title": "À propos",
@@ -109,9 +122,21 @@
         "trust": "Après la première phase, le client a choisi de poursuivre directement avec Xonobox, sans intermédiaire, et a déjà demandé un troisième sprint.",
         "sprintsLabel": "Feuille de route du contrat direct",
         "sprints": {
-          "s1": { "name": "Sprint 1", "state": "Livré", "text": "Gestion complète des adhésions des membres" },
-          "s2": { "name": "Sprint 2", "state": "En cours", "text": "Gestion des prestataires, tableau de bord de recouvrement et de remboursement" },
-          "s3": { "name": "Sprint 3", "state": "Demandé par le client", "text": "Gestion financière de la mutuelle" }
+          "s1": {
+            "name": "Sprint 1",
+            "state": "Livré",
+            "text": "Gestion complète des adhésions des membres"
+          },
+          "s2": {
+            "name": "Sprint 2",
+            "state": "En cours",
+            "text": "Gestion des prestataires, tableau de bord de recouvrement et de remboursement"
+          },
+          "s3": {
+            "name": "Sprint 3",
+            "state": "Demandé par le client",
+            "text": "Gestion financière de la mutuelle"
+          }
         }
       },
       "carheav": {
@@ -152,9 +177,17 @@
       }
     },
     "education": {
-      "licence": { "degree": "Licence en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
-      "dts": { "degree": "DTS en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
-      "bac": { "degree": "Baccalauréat Série C" }
+      "licence": {
+        "degree": "Licence en Programmation",
+        "school": "Institut de Formation Technique (IFT), Antananarivo"
+      },
+      "dts": {
+        "degree": "DTS en Programmation",
+        "school": "Institut de Formation Technique (IFT), Antananarivo"
+      },
+      "bac": {
+        "degree": "Baccalauréat Série C"
+      }
     }
   },
   "contact": {

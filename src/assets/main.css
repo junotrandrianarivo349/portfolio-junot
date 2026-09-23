@@ -16,9 +16,9 @@
   --color-fg: var(--fg);                     /* 14.3 / 14.3 */
   --color-muted: var(--muted);               /* 7.3 on ink, 5.9 on ink-2 / 5.3 on paper */
   --color-cyan: #22d3ee;                     /* fills: buttons, synced state */
-  --color-cyan-ink: var(--cyan-ink);         /* cyan used as text: 9.0 / 4.7 */
+  --color-cyan-ink: var(--cyan-ink);         /* cyan as text, focus ring, state marks: ≥ 6.3 / ≥ 5.1 */
   --color-on-cyan: #0e2230;                  /* text on cyan fills: 9.0 */
-  --color-laterite: #c2502f;                 /* fills only (graphical, ≥ 3:1 on ink): offline state */
+  --color-laterite: var(--laterite);         /* offline state marks (graphical, ≥ 3:1 on every surface) */
   --color-laterite-ink: var(--laterite-ink); /* laterite used as text: 6.0 / 5.5 */
 
   /* Legacy aliases, removed once every section is migrated. */
@@ -42,7 +42,8 @@
   --line: #c3d6de;
   --fg: #0e2230;        /* ink */
   --muted: #46677a;
-  --cyan-ink: #0e7490;
+  --cyan-ink: #0b6780;
+  --laterite: #c2502f;  /* 4.1 / 4.7 / 3.8 on bg / surface / raised */
   --laterite-ink: #a63f22;
   color-scheme: light;
 }
@@ -55,6 +56,7 @@
   --fg: #eaf2f4;        /* paper */
   --muted: #8fb3c4;
   --cyan-ink: #22d3ee;
+  --laterite: #ea805f;  /* 6.0 / 4.9 / 4.2 on bg / surface / raised */
   --laterite-ink: #ea805f;
   color-scheme: dark;
 }
@@ -77,7 +79,7 @@
     text-wrap: pretty;
   }
   :focus-visible {
-    outline: 2px solid var(--color-cyan);
+    outline: 2px solid var(--color-cyan-ink); /* cyan fill is 1.6:1 on paper: use the ink variant */
     outline-offset: 3px;
     border-radius: 4px;
   }

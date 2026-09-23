@@ -11,7 +11,6 @@ const { locale, toggle } = useLocaleToggle()
   <button
     type="button"
     class="flex h-10 items-center gap-1 rounded-full border border-line px-3 text-sm font-semibold transition-colors hover:border-accent-ink"
-    :aria-label="t('a11y.switchLang')"
     :title="t('a11y.switchLang')"
     @click="toggle"
   >
@@ -21,5 +20,6 @@ const { locale, toggle } = useLocaleToggle()
       aria-hidden="true"
     >/</span>
     <span :class="locale === 'fr' ? 'text-accent-ink' : 'text-muted'">FR</span>
+    <span class="sr-only">({{ t('a11y.switchLang') }})</span>
   </button>
 </template>

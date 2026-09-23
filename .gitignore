@@ -7,3 +7,8 @@ dist
 .vercel
 .DS_Store
 *.tsbuildinfo
+
+# Playwright / Lighthouse
+test-results/
+playwright-report/
+.lighthouseci/

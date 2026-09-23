@@ -3,7 +3,6 @@ import { useI18n } from 'vue-i18n'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import HeroSection from '@/components/sections/HeroSection.vue'
-import FeaturedProject from '@/components/sections/FeaturedProject.vue'
 import AboutSection from '@/components/sections/AboutSection.vue'
 import SkillsSection from '@/components/sections/SkillsSection.vue'
 import ProjectsSection from '@/components/sections/ProjectsSection.vue'
@@ -28,7 +27,6 @@ useLocaleSync()
       class="outline-none"
     >
       <HeroSection />
-      <FeaturedProject />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />

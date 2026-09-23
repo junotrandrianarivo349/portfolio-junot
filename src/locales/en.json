@@ -15,36 +15,49 @@
     "home": "Junot Randrianarivo, back to top"
   },
   "nav": {
-    "featured": "Demo",
     "about": "About",
     "skills": "Skills",
-    "projects": "Projects",
-    "experience": "Experience",
+    "projects": "Case studies",
+    "experience": "Career",
     "contact": "Contact"
   },
   "hero": {
     "name": "Junot Randrianarivo",
     "title": "Full-Stack JavaScript Developer {'|'} Vue.js · NestJS · Flutter",
-    "tagline": "I build web and mobile apps and take them all the way to production: Linux servers, Docker, CI/CD.",
-    "ctaProjects": "See my projects",
-    "ctaContact": "Contact me",
+    "tagline": "I ship web and mobile apps to production, including apps that keep working offline.",
+    "ctaProjects": "See the case studies",
+    "ctaContact": "Email me",
     "photoAlt": "Portrait of Junot Randrianarivo in a blue suit",
-    "pipelineLabel": "How I work: from code to production",
-    "pipeline": {
-      "code": "Code",
-      "build": "Build",
-      "deploy": "Deploy",
-      "live": "Live"
-    }
-  },
-  "featured": {
-    "title": "Open source demo",
-    "status": "Coming soon",
-    "heading": "A full demo app, with its code",
-    "text": "My client projects are confidential, so I am building a public demo app. It will be available here with a live version and its source code on GitHub.",
-    "demo": "View the demo",
-    "code": "View the code",
-    "unavailable": "Not available yet"
+    "facts": {
+      "location": "Madagascar, GMT+3",
+      "remote": "Available for remote work",
+      "language": "French and English"
+    },
+    "demo": {
+      "title": "Try it: an enrollment form that works offline",
+      "caption": "Interactive demo with fictional data. It is how e-famenoPlus works for field agents.",
+      "app": "New enrollment",
+      "member": "Member",
+      "commune": "Town",
+      "save": "Save enrollment",
+      "queueFull": "Queue full. Turn the network back on to sync.",
+      "hint": "Save an enrollment, then cut the network.",
+      "network": "Network",
+      "networkOn": "connected",
+      "networkOff": "cut",
+      "status": {
+        "synced": "Synced",
+        "syncing": "Syncing…",
+        "pending": "Waiting for network: {n} enrollment | Waiting for network: {n} enrollments"
+      },
+      "pendingList": "Stored on the device",
+      "syncedList": "Sent to the server",
+      "pendingItem": "pending",
+      "syncedItem": "synced",
+      "offline": "Offline"
+    },
+    "role": "Full-Stack JavaScript Developer",
+    "stack": "Vue.js · NestJS · Flutter"
   },
   "about": {
     "title": "About",
