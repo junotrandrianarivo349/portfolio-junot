@@ -4,11 +4,10 @@ export const contact = {
   phoneDisplay: '+261 34 40 021 45',
   /** International format without "+" or spaces, as required by wa.me links. */
   whatsapp: '261344002145',
-  // TODO(Junot): add your profile URLs. Links stay hidden while these are empty.
-  github: '',
+  github: 'https://github.com/junot5404',
   linkedin: 'https://www.linkedin.com/in/junot-randrianarivo-b19143196/',
   /** Public repository of this portfolio, shown in the footer once set. */
-  repo: '',
+  repo: 'https://github.com/junot5404/portfolio-junot',
 } as const
 
 export function whatsappUrl(message: string): string {
