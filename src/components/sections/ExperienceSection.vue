@@ -18,7 +18,6 @@ const { t } = useI18n()
         :title="t('experience.title')"
       />
       <div
-        v-reveal
         class="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
       >
         <div>

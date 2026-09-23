@@ -1,44 +1,61 @@
 @import 'tailwindcss';
 
-/* Dark mode is driven by a `dark` class on <html> (toggled by useTheme). */
+/* Dark mode is driven by a `dark` class on <html> (toggled by useTheme). Dark is the default. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Semantic tokens: components use `bg-bg`, `text-muted`, `border-line`…
-   and never raw colors, so both themes stay consistent. */
+/*
+ * Design tokens. Components only use these semantic names (bg-surface, text-muted, text-cyan-ink…),
+ * never raw colours, so both themes stay consistent.
+ * Contrast (WCAG AA) is noted next to each text token: dark / light.
+ */
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-raised: var(--raised);
   --color-line: var(--line);
-  --color-fg: var(--fg);
-  --color-muted: var(--muted);
+  --color-fg: var(--fg);                     /* 14.3 / 14.3 */
+  --color-muted: var(--muted);               /* 7.3 on ink, 5.9 on ink-2 / 5.3 on paper */
+  --color-cyan: #22d3ee;                     /* fills: buttons, synced state */
+  --color-cyan-ink: var(--cyan-ink);         /* cyan used as text: 9.0 / 4.7 */
+  --color-on-cyan: #0e2230;                  /* text on cyan fills: 9.0 */
+  --color-laterite: #c2502f;                 /* fills only (graphical, ≥ 3:1 on ink): offline state */
+  --color-laterite-ink: var(--laterite-ink); /* laterite used as text: 6.0 / 5.5 */
+
+  /* Legacy aliases, removed once every section is migrated. */
   --color-accent: #22d3ee;
-  --color-accent-ink: var(--accent-ink);
-  --color-on-accent: #04232c;
+  --color-accent-ink: var(--cyan-ink);
+  --color-on-accent: #0e2230;
 
   --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius by role, not one value everywhere. */
+  --radius-badge: 4px;
+  --radius-panel: 12px;
+  --radius-device: 28px;
 }
 
 :root {
-  --bg: #f4f8f9;
+  --bg: #eaf2f4;        /* paper */
   --surface: #ffffff;
-  --raised: #e8f1f3;
-  --line: #cfdfe4;
-  --fg: #0b2530;
-  --muted: #4a6572;
-  --accent-ink: #0e7490; /* cyan-700: readable on light backgrounds */
+  --raised: #dce8ec;
+  --line: #c3d6de;
+  --fg: #0e2230;        /* ink */
+  --muted: #46677a;
+  --cyan-ink: #0e7490;
+  --laterite-ink: #a63f22;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0a1a24;
-  --surface: #0f2531;
-  --raised: #143040;
-  --line: #1f3d4c;
-  --fg: #e6f1f4;
-  --muted: #93aab4;
-  --accent-ink: #22d3ee;
+  --bg: #0e2230;        /* ink */
+  --surface: #15324a;   /* ink-2 */
+  --raised: #1b3d58;
+  --line: #24495f;
+  --fg: #eaf2f4;        /* paper */
+  --muted: #8fb3c4;
+  --cyan-ink: #22d3ee;
+  --laterite-ink: #ea805f;
   color-scheme: dark;
 }
 
@@ -49,47 +66,33 @@
   }
   body {
     @apply bg-bg text-fg font-sans antialiased;
-    font-size: 1.0625rem;
-    line-height: 1.6;
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
   }
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     @apply font-display;
     text-wrap: balance;
   }
+  p {
+    text-wrap: pretty;
+  }
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-cyan);
     outline-offset: 3px;
     border-radius: 4px;
   }
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-on-accent);
+    background: var(--color-cyan);
+    color: var(--color-on-cyan);
   }
-}
-
-/* v-reveal: sections fade in once when they enter the viewport. */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Hero pipeline: the line draws itself once, on load. */
-@keyframes draw {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-@keyframes pop {
-  from { opacity: 0; transform: scale(0.6); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
 }

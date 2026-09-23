@@ -23,7 +23,6 @@ const label = (skill: Skill) => (skill.key ? t(`skills.items.${skill.key}`) : sk
 
       <!-- Differentiators first, then the full inventory. -->
       <div
-        v-reveal
         class="mb-14"
       >
         <h3 class="mb-5 text-xl font-bold">
@@ -51,7 +50,6 @@ const label = (skill: Skill) => (skill.key ? t(`skills.items.${skill.key}`) : sk
       </div>
 
       <div
-        v-reveal
         class="grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4"
       >
         <div

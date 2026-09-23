@@ -7,7 +7,7 @@ const theme = ref<Theme>(document.documentElement.classList.contains('dark') ? '
 
 function apply(value: Theme) {
   document.documentElement.classList.toggle('dark', value === 'dark')
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', value === 'dark' ? '#0a1a24' : '#f4f8f9')
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', value === 'dark' ? '#0e2230' : '#eaf2f4')
   try {
     localStorage.setItem('theme', value)
   } catch {

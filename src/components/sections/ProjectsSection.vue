@@ -25,7 +25,6 @@ const p = (key: string) => t(`projects.items.${key}`)
 
     <!-- Lead project: the renewed contract is the strongest proof of client trust. -->
     <article
-      v-reveal
       :aria-labelledby="`project-${leadProject.id}`"
       class="grid gap-8 rounded-3xl border border-line bg-surface p-6 sm:p-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12"
     >
@@ -132,7 +131,6 @@ const p = (key: string) => t(`projects.items.${key}`)
     </article>
 
     <div
-      v-reveal
       class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
       <article

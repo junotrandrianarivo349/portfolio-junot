@@ -19,7 +19,7 @@ const facts = [
     aria-labelledby="about-title"
     class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
   >
-    <div v-reveal>
+    <div>
       <SectionTitle
         id="about-title"
         :title="t('about.title')"

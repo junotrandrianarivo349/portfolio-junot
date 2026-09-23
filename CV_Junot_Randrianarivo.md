@@ -24,6 +24,7 @@
   - Sprint 1 (livré) : gestion complète des adhésions des membres.
   - Sprint 2 (en cours) : gestion des prestataires, tableau de bord de recouvrement et de remboursement des membres et des prestataires.
   - Sprint 3 (proposé par le client) : gestion financière de la mutuelle.
+- Mode hors ligne : l'application Android fonctionne hors ligne sur tablette et se synchronise via Internet quand le réseau revient (zones rurales à réseau faible). *(Précision apportée par Junot, septembre 2026.)*
 - Stack : Java/Android, PHP/Symfony, MySQL
 
 **Carheav (client local) — plateforme VTC**

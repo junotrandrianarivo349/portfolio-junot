@@ -41,7 +41,6 @@ async function copyEmail() {
     class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
   >
     <div
-      v-reveal
       class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16"
     >
       <div>

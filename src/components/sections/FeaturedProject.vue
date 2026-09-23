@@ -16,7 +16,6 @@ const isAvailable = Boolean(featured.demoUrl || featured.codeUrl)
     class="mx-auto max-w-6xl px-4 sm:px-6"
   >
     <div
-      v-reveal
       class="grid overflow-hidden rounded-3xl border border-accent/40 bg-surface lg:grid-cols-[1.1fr_1fr]"
     >
       <div class="flex flex-col p-6 sm:p-10">
