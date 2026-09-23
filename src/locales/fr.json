@@ -1,1 +1,178 @@
-{ "meta": { "title": "Junot Randrianarivo — Développeur Full-Stack JavaScript" } }
+{
+  "meta": {
+    "title": "Junot Randrianarivo — Développeur Full-Stack JavaScript",
+    "description": "Développeur full-stack JavaScript (Vue.js, NestJS, Flutter) basé à Madagascar. Des applications web et mobiles menées jusqu'en production. Disponible en remote."
+  },
+  "a11y": {
+    "skip": "Aller au contenu",
+    "newTab": "s'ouvre dans un nouvel onglet",
+    "primaryNav": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toLight": "Passer en mode clair",
+    "toDark": "Passer en mode sombre",
+    "switchLang": "Read the site in English",
+    "home": "Junot Randrianarivo, retour en haut"
+  },
+  "nav": {
+    "featured": "Démo",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Junot Randrianarivo",
+    "title": "Développeur Full-Stack JavaScript | Vue.js · NestJS · Flutter",
+    "tagline": "Je conçois des applications web et mobiles et je les mène jusqu'en production : serveurs Linux, Docker, CI/CD.",
+    "ctaProjects": "Voir mes projets",
+    "ctaContact": "Me contacter",
+    "photoAlt": "Portrait de Junot Randrianarivo en costume bleu",
+    "pipelineLabel": "Ma façon de travailler : du code à la production",
+    "pipeline": {
+      "code": "Code",
+      "build": "Build",
+      "deploy": "Déploiement",
+      "live": "En ligne"
+    }
+  },
+  "featured": {
+    "title": "Démo open source",
+    "status": "Bientôt disponible",
+    "heading": "Une application de démonstration complète, avec son code",
+    "text": "Mes projets clients sont confidentiels, alors je construis une application de démonstration publique. Elle sera disponible ici, en ligne, avec son code source sur GitHub.",
+    "demo": "Voir la démo",
+    "code": "Voir le code",
+    "unavailable": "Pas encore disponible"
+  },
+  "about": {
+    "title": "À propos",
+    "p1": "Je suis développeur full-stack chez Sunsoft-Sunrise depuis 2020. Je développe les applications de l'entreprise et je les déploie en production sur des serveurs Linux, notamment pour PSI Madagascar dans le secteur pharmaceutique.",
+    "p2": "En 2024, j'ai fondé Xonobox, mon activité indépendante. Je livre des applications web et mobiles directement à mes clients : une mutuelle de santé, une plateforme VTC.",
+    "p3": "Au quotidien, je travaille avec Vue.js, NestJS et Flutter. Je tiens à un code maintenable : Clean Architecture, principes SOLID, tests unitaires.",
+    "facts": {
+      "location": "Basé à Madagascar (GMT+3)",
+      "remote": "Disponible en remote",
+      "language": "Francophone, parle aussi malagasy et anglais"
+    }
+  },
+  "skills": {
+    "title": "Compétences",
+    "intro": "Ce que j'utilise pour construire, livrer et faire tourner des applications.",
+    "highlightsTitle": "Ce qui me distingue",
+    "highlights": {
+      "production": {
+        "title": "Déploiement en production",
+        "text": "Je déploie et j'exploite des applications sur des serveurs VPS Linux, pas seulement sur ma machine."
+      },
+      "devops": {
+        "title": "Docker & CI/CD",
+        "text": "Conteneurs Docker et pipelines GitHub Actions : chaque modification est construite et vérifiée automatiquement."
+      },
+      "offline": {
+        "title": "Offline-first (PowerSync)",
+        "text": "Des applications qui fonctionnent sans réseau et se synchronisent avec le serveur dès que la connexion revient."
+      }
+    },
+    "categories": {
+      "frontend": "Front-end",
+      "backend": "Back-end",
+      "mobile": "Mobile",
+      "databases": "Bases de données",
+      "devops": "Déploiement & DevOps",
+      "architecture": "Architecture & qualité",
+      "tools": "Outils",
+      "ai": "IA"
+    },
+    "items": {
+      "restApi": "API REST",
+      "vps": "Serveur VPS Linux (production)",
+      "powersync": "PowerSync (sync offline-first)",
+      "designPatterns": "Design patterns",
+      "unitTests": "Tests unitaires",
+      "aiDev": "Développement assisté par IA"
+    }
+  },
+  "projects": {
+    "title": "Projets clients",
+    "intro": "Des projets réels, en production ou en cours. Le code et les données appartiennent aux clients : pas de captures d'écran ici.",
+    "problem": "Problème résolu",
+    "role": "Mon rôle",
+    "stack": "Stack",
+    "items": {
+      "efameno": {
+        "client": "Mutuelle de santé Harena (SMMEC Madagascar)",
+        "status": "Xonobox — contrat direct Mutuelle Harena (SMMEC), sprint 2 en cours, sprint 3 demandé par le client",
+        "problem": "Digitaliser l'adhésion des membres et le remboursement des paiements de la mutuelle : une application Android pour les agents sur le terrain et une application web d'administration.",
+        "role": "Fondateur et développeur chez Xonobox. D'abord engagé par PSI Madagascar (avril 2024 – janvier 2025), puis sous contrat direct avec la mutuelle.",
+        "trust": "Après la première phase, le client a choisi de poursuivre directement avec Xonobox, sans intermédiaire, et a déjà demandé un troisième sprint.",
+        "sprintsLabel": "Feuille de route du contrat direct",
+        "sprints": {
+          "s1": { "name": "Sprint 1", "state": "Livré", "text": "Gestion complète des adhésions des membres" },
+          "s2": { "name": "Sprint 2", "state": "En cours", "text": "Gestion des prestataires, tableau de bord de recouvrement et de remboursement" },
+          "s3": { "name": "Sprint 3", "state": "Demandé par le client", "text": "Gestion financière de la mutuelle" }
+        }
+      },
+      "carheav": {
+        "client": "Client local",
+        "status": "Xonobox — démo validée, production en préparation",
+        "problem": "Une plateforme VTC : une application passager, une application chauffeur et un back-office web pour gérer les courses, les utilisateurs et les véhicules.",
+        "role": "Réalisé chez Xonobox : les deux applications mobiles Flutter, le back-office Vue.js et l'API REST NestJS."
+      },
+      "pharmaplus": {
+        "client": "PSI Madagascar",
+        "status": "Projet d'entreprise (Sunsoft-Sunrise) — confidentiel",
+        "problem": "La gestion des ventes et du stock pour les dépôts de médicaments.",
+        "role": "Développement et maintenance de l'application mobile Android et de l'application web Symfony."
+      },
+      "datapharm": {
+        "client": "PSI Madagascar",
+        "status": "Projet d'entreprise (Sunsoft-Sunrise) — confidentiel",
+        "problem": "Une application web qui centralise la gestion des médicaments des pharmacies à Madagascar.",
+        "role": "Développement front-end et back-end."
+      }
+    }
+  },
+  "experience": {
+    "title": "Expérience",
+    "workTitle": "Parcours professionnel",
+    "educationTitle": "Formation",
+    "present": "Aujourd'hui",
+    "items": {
+      "xonobox": {
+        "role": "Fondateur & Développeur",
+        "org": "Xonobox (activité indépendante)",
+        "text": "Applications web et mobiles pour des clients directs : e-famenoPlus pour la Mutuelle de santé Harena, la plateforme VTC Carheav."
+      },
+      "sunsoft": {
+        "role": "Développeur Full-Stack (salarié)",
+        "org": "Sunsoft-Sunrise, Antananarivo",
+        "text": "Développement full-stack et déploiement en production des applications de l'entreprise sur serveur VPS Linux. Projets réalisés pour PSI Madagascar : PharmaPlusLite et DataPharm."
+      }
+    },
+    "education": {
+      "licence": { "degree": "Licence en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
+      "dts": { "degree": "DTS en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
+      "bac": { "degree": "Baccalauréat Série C" }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "text": "Un projet, un poste, une question ? Écrivez-moi par email ou sur WhatsApp.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "whatsappMessage": "Bonjour Junot, je vous contacte depuis votre portfolio.",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "Télécharger mon CV (PDF)",
+    "cvFile": "/cv-fr.pdf",
+    "copy": "Copier l'adresse email",
+    "copied": "Adresse email copiée"
+  },
+  "footer": {
+    "rights": "© {year} Junot Randrianarivo",
+    "built": "Construit avec Vue 3, TypeScript et Tailwind CSS.",
+    "source": "Code source"
+  }
+}
