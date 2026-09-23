@@ -170,7 +170,7 @@
       },
       "datapharm": {
         "client": "PSI Madagascar, at Sunsoft-Sunrise",
-        "problem": "Pharmacies across Madagascar needed one place to manage their medicines.",
+        "problem": "Pharmacies in Madagascar needed one place to manage their medicines.",
         "built": "A web application that centralizes medicine management for pharmacies.",
         "role": "Front-end and back-end development.",
         "status": "Company project. Code and data are confidential.",

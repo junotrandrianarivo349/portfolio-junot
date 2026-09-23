@@ -21,3 +21,17 @@ test.describe('theme toggle', () => {
     expect(await page.evaluate(() => localStorage.getItem('theme'))).toBe('dark')
   })
 })
+
+test.describe('theme regressions', () => {
+  // A scoped `:global(.dark) x` selector once compiled to `.dark { opacity: .14 }` and faded the whole page.
+  test('no ancestor of the content is faded in either theme', async ({ page }) => {
+    for (const theme of ['dark', 'light']) {
+      await page.addInitScript((t) => localStorage.setItem('theme', t), theme)
+      await page.goto('/')
+      const opacities = await page.evaluate(() =>
+        [document.documentElement, document.body, document.querySelector('main')!].map((el) => getComputedStyle(el).opacity),
+      )
+      expect(opacities, `theme ${theme}`).toEqual(['1', '1', '1'])
+    }
+  })
+})

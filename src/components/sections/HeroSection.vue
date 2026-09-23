@@ -17,7 +17,8 @@ const facts = ['location', 'remote', 'language'] as const
     class="relative isolate overflow-hidden"
   >
     <!-- Topographic lines, drawn with the theme's text colour through a mask so they work in both themes. -->
-    <TopoLines class="topo pointer-events-none absolute inset-0 -z-10 size-full text-fg" />
+    <!-- Same look as hero-topo.svg (strokes at 14 % alpha); faded out under the text column. -->
+    <TopoLines class="topo pointer-events-none absolute inset-0 -z-10 size-full text-fg opacity-10 dark:opacity-[0.14]" />
 
     <div class="mx-auto grid max-w-6xl items-start gap-10 px-4 pt-8 pb-20 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20 lg:pb-28">
       <div class="max-w-[40rem] lg:pt-8">
@@ -84,13 +85,8 @@ const facts = ['location', 'remote', 'language'] as const
 </template>
 
 <style scoped>
+/* Fade out under the text column so lines never cross the headline. */
 .topo {
-  /* Same look as hero-topo.svg (strokes at 14 % alpha): 0.14 in dark, 0.1 in light. */
-  opacity: 0.1;
-  /* Fade out under the text column so lines never cross the headline. */
   mask-image: linear-gradient(to right, transparent 30%, #000 70%);
-}
-:global(.dark) .topo {
-  opacity: 0.14;
 }
 </style>
