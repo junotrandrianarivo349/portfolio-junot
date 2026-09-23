@@ -12,7 +12,8 @@ test.describe('language toggle', () => {
     await expect(html).toHaveAttribute('lang', 'fr')
     await expect(page).toHaveTitle(TITLE_FR)
     // Visible text changes: the toggles' accessible names are rendered strings.
-    await expect(langToggle(page)).toHaveAccessibleName('Read the site in English')
+    // Name = visible "EN / FR" + sr-only hint (label-in-name, WCAG 2.5.3).
+    await expect(langToggle(page)).toHaveAccessibleName(/^EN FR \(Read the site in English\)$/)
     await expect(page.getByRole('button', { name: 'Passer en mode clair' })).toBeVisible()
     await expect(page.getByText('Développeur Full-Stack JavaScript', { exact: false }).first()).toBeVisible()
     expect(await page.evaluate(() => localStorage.getItem('locale'))).toBe('fr')

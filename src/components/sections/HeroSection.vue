@@ -21,7 +21,7 @@ const facts = ['location', 'remote', 'language'] as const
       aria-hidden="true"
     />
 
-    <div class="mx-auto grid max-w-6xl items-start gap-14 px-4 pt-12 pb-20 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20 lg:pb-28">
+    <div class="mx-auto grid max-w-6xl items-start gap-10 px-4 pt-8 pb-20 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20 lg:pb-28">
       <div class="max-w-[40rem] lg:pt-8">
         <h1
           id="hero-title"
@@ -31,9 +31,9 @@ const facts = ['location', 'remote', 'language'] as const
         </h1>
         <p class="mt-5 font-display text-xl leading-snug font-semibold text-cyan-ink sm:text-2xl">
           <span class="block">{{ t('hero.role') }}</span>
-          <span class="block text-fg">{{ t('hero.stack') }}</span>
+          <span class="mt-1 block text-base font-medium text-fg/80 sm:text-lg">{{ t('hero.stack') }}</span>
         </p>
-        <p class="mt-5 max-w-[34rem] text-lg text-muted sm:text-xl">
+        <p class="mt-5 max-w-[34rem] text-lg text-fg/80 sm:text-xl">
           {{ t('hero.tagline') }}
         </p>
 
@@ -53,43 +53,43 @@ const facts = ['location', 'remote', 'language'] as const
           </BaseButton>
           <SocialLinks />
         </div>
-
-        <div class="mt-12 flex items-center gap-4">
-          <picture>
-            <source
-              srcset="/images/avatar.webp"
-              type="image/webp"
-            >
-            <img
-              src="/images/avatar.jpg"
-              :alt="t('hero.photoAlt')"
-              width="128"
-              height="128"
-              fetchpriority="high"
-              class="size-16 shrink-0 rounded-full border-2 border-line object-cover"
-            >
-          </picture>
-          <ul class="flex flex-col text-sm text-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
-            <li
-              v-for="fact in facts"
-              :key="fact"
-            >
-              {{ t(`hero.facts.${fact}`) }}
-            </li>
-          </ul>
-        </div>
       </div>
 
-      <SyncDemo />
+      <SyncDemo class="lg:row-span-2" />
+
+      <div class="flex items-center gap-4 lg:col-start-1 lg:row-start-2 lg:-mt-6">
+        <picture>
+          <source
+            srcset="/images/avatar.webp"
+            type="image/webp"
+          >
+          <img
+            src="/images/avatar.jpg"
+            :alt="t('hero.photoAlt')"
+            width="128"
+            height="128"
+            fetchpriority="high"
+            class="size-20 shrink-0 rounded-full border-2 border-line object-cover"
+          >
+        </picture>
+        <ul class="flex flex-col text-sm text-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
+          <li
+            v-for="fact in facts"
+            :key="fact"
+          >
+            {{ t(`hero.facts.${fact}`) }}
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
 .topo {
-  /* hero-topo.svg strokes are at 14 % alpha: opacity 1 → 0.14 in dark, 0.5 → 0.07 in light. */
+  /* hero-topo.svg strokes are at 14 % alpha: opacity 1 → 0.14 in dark, 0.75 → 0.1 in light. */
   background-color: var(--color-fg);
-  opacity: 0.5;
+  opacity: 0.75;
   /* Fade out under the text column so lines never cross the headline. */
   mask-image: url('/images/hero-topo.svg'), linear-gradient(to right, transparent 30%, #000 70%);
   mask-composite: intersect;

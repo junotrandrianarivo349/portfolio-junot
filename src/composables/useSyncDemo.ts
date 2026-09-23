@@ -70,7 +70,7 @@ export function useSyncDemo(options: { reducedMotion?: () => boolean } = {}) {
 
   function save() {
     if (queueFull.value) return
-    const record: DemoRecord = { id: nextId.value++, ...nextMember.value }
+    const record: DemoRecord = { ...nextMember.value, id: nextId.value++ } // copy the shown member before advancing
     queue.value = [...queue.value, record]
     drain()
   }

@@ -20,9 +20,16 @@ const { online, queue, synced, inFlight, status, nextMember, queueFull, save, se
   reducedMotion: () => reduced.value,
 })
 
-const statusText = computed(() =>
-  status.value === 'pending' ? t('hero.demo.status.pending', { n: queue.value.length }, queue.value.length) : t(`hero.demo.status.${status.value}`),
-)
+const statusText = computed(() => {
+  if (status.value === 'pending') {
+    const text = t('hero.demo.status.pending', { n: queue.value.length }, queue.value.length)
+    return queueFull.value ? `${text}. ${t('hero.demo.queueFull')}` : text
+  }
+  if (!online.value) return t('hero.demo.offline')
+  return t(`hero.demo.status.${status.value}`)
+})
+// Badge: short label only.
+const badgeText = computed(() => (online.value ? t(`hero.demo.status.${status.value === 'pending' ? 'syncing' : status.value}`) : t('hero.demo.offline')))
 const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.value] : queue.value))
 </script>
 
@@ -69,7 +76,7 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
               class="size-3.5"
               aria-hidden="true"
             />
-            <span class="max-w-[9.5rem] truncate">{{ online ? statusText : t('hero.demo.offline') }}</span>
+            <span class="max-w-[9.5rem] truncate">{{ badgeText }}</span>
           </p>
         </div>
 
@@ -94,14 +101,16 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
 
         <button
           type="button"
-          class="mt-4 min-h-11 w-full rounded-full bg-cyan px-4 text-sm font-semibold text-on-cyan transition-colors hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
-          :disabled="queueFull"
+          class="mt-4 min-h-11 w-full rounded-full bg-cyan px-4 text-sm font-semibold text-on-cyan transition-colors not-aria-disabled:hover:brightness-110 aria-disabled:cursor-not-allowed aria-disabled:opacity-60"
+          :aria-disabled="queueFull"
+          :aria-describedby="queueFull ? 'demo-full' : undefined"
           @click="save"
         >
           {{ t('hero.demo.save') }}
         </button>
         <p
           v-if="queueFull"
+          id="demo-full"
           class="mt-2 text-xs text-laterite-ink"
         >
           {{ t('hero.demo.queueFull') }}
@@ -121,14 +130,24 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
               <li
                 v-for="r in pendingShown"
                 :key="r.id"
-                class="flex items-center gap-2 rounded-md border-l-4 border-laterite bg-surface px-2.5 py-1.5"
+                class="flex items-center gap-2 rounded-md border-l-4 bg-surface px-2.5 py-1.5"
+                :class="r.id === inFlight?.id ? 'border-cyan-ink' : 'border-laterite'"
               >
+                <IconRefresh
+                  v-if="r.id === inFlight?.id"
+                  class="size-3.5 shrink-0 text-cyan-ink motion-safe:animate-spin"
+                  aria-hidden="true"
+                />
                 <IconCloudOff
+                  v-else
                   class="size-3.5 shrink-0 text-laterite-ink"
                   aria-hidden="true"
                 />
                 <span class="flex-1 truncate">{{ r.name }}</span>
-                <span class="text-xs text-muted">{{ t('hero.demo.pendingItem') }}</span>
+                <span
+                  class="text-xs"
+                  :class="r.id === inFlight?.id ? 'text-cyan-ink' : 'text-muted'"
+                >{{ r.id === inFlight?.id ? t('hero.demo.sendingItem') : t('hero.demo.pendingItem') }}</span>
               </li>
             </TransitionGroup>
           </template>
@@ -155,12 +174,14 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
               </li>
             </TransitionGroup>
           </template>
-          <p
+          <!-- Instructions are a real sequence, so an ordered list. -->
+          <ol
             v-else
-            class="pt-2 text-xs text-muted"
+            class="list-inside list-decimal space-y-1 pt-2 text-sm"
           >
-            {{ t('hero.demo.hint') }}
-          </p>
+            <li>{{ t('hero.demo.hint1') }}</li>
+            <li>{{ t('hero.demo.hint2') }}</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -170,8 +191,8 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
       type="button"
       role="switch"
       :aria-checked="online"
-      class="mt-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-[var(--radius-panel)] border px-4 py-2 text-sm transition-colors"
-      :class="online ? 'border-line bg-surface' : 'border-laterite bg-surface'"
+      class="mt-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-[var(--radius-panel)] border border-line bg-surface px-4 py-2 text-sm"
+      
       @click="setOnline(!online)"
     >
       <span class="flex items-center gap-2 font-semibold">
@@ -200,10 +221,6 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
       </span>
     </button>
 
-    <figcaption class="mt-3 text-xs leading-relaxed text-muted">
-      {{ t('hero.demo.caption') }}
-    </figcaption>
-
     <!-- One polite announcement per state change, not per animation frame. -->
     <p
       class="sr-only"
@@ -211,6 +228,10 @@ const pendingShown = computed(() => (inFlight.value ? [inFlight.value, ...queue.
     >
       {{ statusText }}
     </p>
+
+    <figcaption class="mt-3 text-sm leading-relaxed text-muted">
+      {{ t('hero.demo.caption') }}
+    </figcaption>
   </figure>
 </template>
 
