@@ -1,49 +1,43 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import IconMapPin from '~icons/lucide/map-pin'
-import IconGlobe from '~icons/lucide/globe'
-import IconLanguages from '~icons/lucide/languages'
-import SectionTitle from '@/components/ui/SectionTitle.vue'
 
 const { t } = useI18n()
-const facts = [
-  { key: 'location', icon: IconMapPin },
-  { key: 'remote', icon: IconGlobe },
-  { key: 'language', icon: IconLanguages },
-] as const
 </script>
 
 <template>
   <section
     id="about"
     aria-labelledby="about-title"
-    class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
+    class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"
   >
-    <div v-reveal>
-      <SectionTitle
-        id="about-title"
-        :title="t('about.title')"
-      />
-      <div class="grid gap-10 md:grid-cols-[1.6fr_1fr] md:gap-16">
-        <div class="max-w-[65ch] space-y-5 text-lg">
+    <div class="grid gap-10 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-14 lg:grid-cols-[16rem_minmax(0,1fr)]">
+      <picture>
+        <source
+          srcset="/images/photo.webp"
+          type="image/webp"
+        >
+        <img
+          src="/images/photo.jpg"
+          :alt="t('hero.photoAlt')"
+          width="560"
+          height="700"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] w-40 rounded-[var(--radius-panel)] object-cover sm:w-48 md:w-full"
+        >
+      </picture>
+      <div class="max-w-[65ch]">
+        <h2
+          id="about-title"
+          class="text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          {{ t('about.title') }}
+        </h2>
+        <div class="mt-6 space-y-5 text-lg">
           <p>{{ t('about.p1') }}</p>
           <p>{{ t('about.p2') }}</p>
           <p>{{ t('about.p3') }}</p>
         </div>
-        <ul class="h-fit space-y-4 rounded-2xl border border-line p-6">
-          <li
-            v-for="fact in facts"
-            :key="fact.key"
-            class="flex items-start gap-3"
-          >
-            <component
-              :is="fact.icon"
-              class="mt-0.5 size-5 shrink-0 text-accent-ink"
-              aria-hidden="true"
-            />
-            <span>{{ t(`about.facts.${fact.key}`) }}</span>
-          </li>
-        </ul>
       </div>
     </div>
   </section>

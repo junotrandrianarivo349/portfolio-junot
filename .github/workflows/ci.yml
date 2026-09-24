@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   quality:
-    name: Lint, type-check & build
+    name: Lint, type-check & prerender
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -38,12 +38,67 @@ jobs:
       - name: Type-check
         run: npm run type-check
 
-      - name: Build
-        run: npx vite build
+      - name: Prerender (vite-ssg)
+        run: npx vite-ssg build
+
+      # The content must be in the HTML without JavaScript (SEO, link previews).
+      - name: Check prerendered HTML
+        run: |
+          grep -q '<html lang="en"' dist/index.html
+          grep -q '<html lang="fr"' dist/fr/index.html
+          grep -q 'e-famenoPlus' dist/index.html
+          grep -q 'Études de cas' dist/fr/index.html
+          grep -q 'hreflang="fr"' dist/index.html
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
+          retention-days: 7
+
+  e2e:
+    name: E2E & accessibility (Playwright + axe)
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Chromium
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Chromium system dependencies
+        if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      # Desktop 1440, tablet 768 and mobile 375: navigation, language, theme, contact links,
+      # the offline → synced demo, and an axe WCAG 2.1 AA scan in both themes and languages.
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
           retention-days: 7

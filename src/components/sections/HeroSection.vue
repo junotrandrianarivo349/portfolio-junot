@@ -1,122 +1,92 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import IconMail from '~icons/lucide/mail'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import SocialLinks from '@/components/ui/SocialLinks.vue'
+import SyncDemo from '@/components/hero/SyncDemo.vue'
+import TopoLines from '@/components/hero/TopoLines.vue'
+import { contact } from '@/data/contact'
 
 const { t } = useI18n()
-const steps = ['code', 'build', 'deploy', 'live'] as const
-// If the photo fails to load, the "JR" monogram is shown instead.
-const photoFailed = ref(false)
+const facts = ['location', 'remote', 'language'] as const
 </script>
 
 <template>
   <section
     aria-labelledby="hero-title"
-    class="relative overflow-hidden"
+    class="relative isolate overflow-hidden"
   >
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12 lg:gap-16 md:pt-20 md:pb-24">
-      <div class="order-2 md:order-1">
+    <!-- Topographic lines, drawn with the theme's text colour through a mask so they work in both themes. -->
+    <!-- Same look as hero-topo.svg (strokes at 14 % alpha); faded out under the text column. -->
+    <TopoLines class="topo pointer-events-none absolute inset-0 -z-10 size-full text-fg opacity-10 dark:opacity-[0.14]" />
+
+    <div class="mx-auto grid max-w-6xl items-start gap-10 px-4 pt-8 pb-20 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-20 lg:pb-28">
+      <div class="max-w-[40rem] lg:pt-8">
         <h1
           id="hero-title"
-          class="text-[clamp(2.6rem,10.5vw,5.75rem)] leading-[0.95] md:text-[clamp(3rem,6.8vw,5.75rem)] font-extrabold tracking-tight"
+          class="text-[clamp(2.6rem,7vw,4.75rem)] leading-[1.02] font-extrabold tracking-tight"
         >
           {{ t('hero.name') }}
         </h1>
-        <p class="mt-5 font-display text-lg font-semibold text-accent-ink sm:text-xl">
-          {{ t('hero.title') }}
+        <p class="mt-5 font-display text-xl leading-snug font-semibold text-cyan-ink sm:text-2xl">
+          <span class="block">{{ t('hero.role') }}</span>
+          <span class="mt-1 block text-base font-medium text-fg/80 sm:text-lg">{{ t('hero.stack') }}</span>
         </p>
-        <p class="mt-4 max-w-xl text-lg text-muted">
+        <p class="mt-5 max-w-[34rem] text-lg text-fg/80 sm:text-xl">
           {{ t('hero.tagline') }}
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          <BaseButton href="#featured">
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <BaseButton href="#projects">
             {{ t('hero.ctaProjects') }}
           </BaseButton>
           <BaseButton
-            href="#contact"
+            :href="`mailto:${contact.email}`"
             variant="ghost"
           >
-            {{ t('hero.ctaContact') }}
-          </BaseButton>
-          <SocialLinks class="ml-1" />
-        </div>
-
-        <!-- The one orchestrated animation of the page: the delivery pipeline draws itself on load. -->
-        <ol
-          class="pipeline mt-12 flex max-w-lg items-center"
-          :aria-label="t('hero.pipelineLabel')"
-        >
-          <li
-            v-for="(step, i) in steps"
-            :key="step"
-            class="flex items-center"
-            :class="i < steps.length - 1 ? 'flex-1' : ''"
-            :style="{ '--i': i }"
-          >
-            <span class="flex flex-col items-center gap-2">
-              <span
-                class="dot size-3 rounded-full"
-                :class="step === 'live' ? 'bg-accent ring-4 ring-accent/25' : 'border-2 border-accent bg-bg'"
-              />
-              <span
-                class="text-xs font-medium sm:text-sm"
-                :class="step === 'live' ? 'text-accent-ink' : 'text-muted'"
-              >{{ t(`hero.pipeline.${step}`) }}</span>
-            </span>
-            <span
-              v-if="i < steps.length - 1"
-              class="line mx-2 mb-6 h-0.5 flex-1 origin-left bg-accent/60"
+            <IconMail
+              class="size-4"
               aria-hidden="true"
             />
-          </li>
-        </ol>
+            {{ t('hero.ctaContact') }}
+          </BaseButton>
+          <SocialLinks />
+        </div>
       </div>
 
-      <div class="order-1 justify-self-start md:order-2 md:justify-self-end">
-        <div class="relative w-36 sm:w-48 md:w-56 lg:w-80">
-          <!-- Offset frame in the accent color. -->
-          <div
-            class="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border-2 border-accent md:translate-x-5 md:translate-y-5"
-            aria-hidden="true"
-          />
-          <picture v-if="!photoFailed">
-            <source
-              srcset="/images/photo.webp"
-              type="image/webp"
-            >
-            <img
-              src="/images/photo.jpg"
-              :alt="t('hero.photoAlt')"
-              width="560"
-              height="700"
-              fetchpriority="high"
-              class="relative aspect-[4/5] w-full rounded-[2rem] object-cover"
-              @error="photoFailed = true"
-            >
-          </picture>
-          <div
-            v-else
-            class="relative grid aspect-[4/5] w-full place-items-center rounded-[2rem] bg-raised font-display text-6xl font-extrabold text-accent-ink"
-            role="img"
-            :aria-label="t('hero.name')"
+      <SyncDemo class="lg:row-span-2" />
+
+      <div class="flex items-center gap-4 lg:col-start-1 lg:row-start-2 lg:-mt-6">
+        <picture>
+          <source
+            srcset="/images/avatar.webp"
+            type="image/webp"
           >
-            JR
-          </div>
-        </div>
+          <img
+            src="/images/avatar.jpg"
+            alt=""
+            width="128"
+            height="128"
+            fetchpriority="high"
+            class="size-20 shrink-0 rounded-full border-2 border-line object-cover"
+          >
+        </picture>
+        <ul class="flex flex-col text-sm text-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
+          <li
+            v-for="fact in facts"
+            :key="fact"
+          >
+            {{ t(`hero.facts.${fact}`) }}
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.pipeline .dot {
-  animation: pop 0.35s ease-out both;
-  animation-delay: calc(var(--i) * 0.45s + 0.2s);
-}
-.pipeline .line {
-  animation: draw 0.4s ease-in-out both;
-  animation-delay: calc(var(--i) * 0.45s + 0.45s);
+/* Fade out under the text column so lines never cross the headline. */
+.topo {
+  mask-image: linear-gradient(to right, transparent 30%, #000 70%);
 }
 </style>

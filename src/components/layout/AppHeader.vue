@@ -18,7 +18,8 @@ function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') open.value = false
 }
 onMounted(() => {
-  onScroll()
+  // Read scroll position on the next frame, not during mount, to avoid a forced synchronous layout.
+  requestAnimationFrame(onScroll)
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('keydown', onKey)
 })
@@ -36,10 +37,10 @@ onBeforeUnmount(() => {
     <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
       <a
         href="#top"
-        class="font-display text-lg font-bold tracking-tight"
-        :aria-label="t('a11y.home')"
+        class="inline-flex min-h-11 min-w-11 items-center font-display text-lg font-bold tracking-tight"
       >
-        <span aria-hidden="true">JR<span class="text-accent">.</span></span>
+        <span aria-hidden="true">JR<span class="text-cyan-ink">.</span></span>
+        <span class="sr-only">{{ t('a11y.home') }}</span>
       </a>
 
       <nav

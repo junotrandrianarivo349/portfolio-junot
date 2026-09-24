@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import SectionTitle from '@/components/ui/SectionTitle.vue'
-import TechBadge from '@/components/ui/TechBadge.vue'
 import { highlights, skillCategories, type Skill } from '@/data/skills'
 
 const { t } = useI18n()
@@ -14,67 +12,68 @@ const label = (skill: Skill) => (skill.key ? t(`skills.items.${skill.key}`) : sk
     aria-labelledby="skills-title"
     class="border-y border-line bg-surface"
   >
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-      <SectionTitle
-        id="skills-title"
-        :title="t('skills.title')"
-        :intro="t('skills.intro')"
-      />
-
-      <!-- Differentiators first, then the full inventory. -->
-      <div
-        v-reveal
-        class="mb-14"
-      >
-        <h3 class="mb-5 text-xl font-bold">
+    <div class="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <div>
+        <h2
+          id="skills-title"
+          class="text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          {{ t('skills.title') }}
+        </h2>
+        <p class="mt-3 text-lg text-muted">
+          {{ t('skills.intro') }}
+        </p>
+        <!-- Differentiators: plain text, no cards. -->
+        <h3 class="mt-10 text-lg font-bold">
           {{ t('skills.highlightsTitle') }}
         </h3>
-        <ul class="grid gap-4 md:grid-cols-3">
+        <ul class="mt-4 space-y-5">
           <li
             v-for="h in highlights"
             :key="h.id"
-            class="rounded-2xl border-l-4 border-accent bg-bg p-6"
+            class="border-l-2 border-cyan-ink pl-4"
           >
-            <component
-              :is="h.icon"
-              class="size-7 text-accent-ink"
-              aria-hidden="true"
-            />
-            <p class="mt-4 font-display text-lg font-bold">
+            <p class="font-semibold">
               {{ t(`skills.highlights.${h.id}.title`) }}
             </p>
-            <p class="mt-2 text-muted">
+            <p class="mt-1 text-muted">
               {{ t(`skills.highlights.${h.id}.text`) }}
             </p>
           </li>
         </ul>
       </div>
 
-      <div
-        v-reveal
-        class="grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4"
-      >
+      <dl class="grid gap-x-10 gap-y-6 self-start sm:grid-cols-2">
         <div
           v-for="cat in skillCategories"
           :key="cat.id"
         >
-          <h3 class="mb-3 text-base font-bold">
+          <dt class="text-sm font-semibold text-muted">
             {{ t(`skills.categories.${cat.id}`) }}
-          </h3>
-          <ul class="flex flex-wrap gap-2">
-            <li
-              v-for="skill in cat.items"
-              :key="skill.key ?? skill.name"
-            >
-              <TechBadge
-                :label="label(skill)"
-                :icon="skill.icon"
-                :highlight="skill.highlight"
-              />
-            </li>
-          </ul>
+          </dt>
+          <dd class="mt-1">
+            <ul class="skill-list flex flex-wrap gap-y-0.5">
+              <li
+                v-for="skill in cat.items"
+                :key="skill.key ?? skill.name"
+                :class="skill.highlight ? 'font-semibold' : ''"
+              >
+                {{ label(skill) }}
+              </li>
+            </ul>
+          </dd>
         </div>
-      </div>
+      </dl>
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Middle dot between items so neighbouring names never read as one. */
+.skill-list li:not(:last-child)::after {
+  content: '·';
+  margin-inline: 0.5rem;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+</style>

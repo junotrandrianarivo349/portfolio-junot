@@ -10,7 +10,7 @@ const { t } = useI18n()
   <section
     id="experience"
     aria-labelledby="experience-title"
-    class="border-y border-line bg-surface"
+    class=""
   >
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <SectionTitle
@@ -18,7 +18,6 @@ const { t } = useI18n()
         :title="t('experience.title')"
       />
       <div
-        v-reveal
         class="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
       >
         <div>
@@ -32,10 +31,10 @@ const { t } = useI18n()
               class="relative pb-10 pl-8 last:pb-0"
             >
               <span
-                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-accent bg-surface"
+                class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-cyan-ink bg-bg"
                 aria-hidden="true"
               />
-              <p class="text-sm font-semibold text-accent-ink">
+              <p class="text-sm font-semibold text-cyan-ink">
                 {{ job.start }} – {{ job.end ?? t('experience.present') }}
               </p>
               <h4 class="mt-1 font-display text-xl font-bold">

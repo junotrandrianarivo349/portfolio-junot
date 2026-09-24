@@ -1,24 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
-import HeroSection from '@/components/sections/HeroSection.vue'
-import FeaturedProject from '@/components/sections/FeaturedProject.vue'
-import AboutSection from '@/components/sections/AboutSection.vue'
-import SkillsSection from '@/components/sections/SkillsSection.vue'
-import ProjectsSection from '@/components/sections/ProjectsSection.vue'
-import ExperienceSection from '@/components/sections/ExperienceSection.vue'
-import ContactSection from '@/components/sections/ContactSection.vue'
-import { useLocaleSync } from '@/composables/useLocale'
+import { useLocaleHead } from '@/composables/useLocale'
+import { syncThemeFromDocument } from '@/composables/useTheme'
 
 const { t } = useI18n()
-useLocaleSync()
+useLocaleHead()
+onMounted(syncThemeFromDocument)
 </script>
 
 <template>
   <a
     href="#main"
-    class="sr-only z-50 rounded-md bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    class="sr-only z-50 rounded-md bg-cyan px-4 py-2 font-semibold text-on-cyan focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
   >{{ t('a11y.skip') }}</a>
   <div id="top">
     <AppHeader />
@@ -27,13 +23,7 @@ useLocaleSync()
       tabindex="-1"
       class="outline-none"
     >
-      <HeroSection />
-      <FeaturedProject />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <ContactSection />
+      <RouterView />
     </main>
     <AppFooter />
   </div>

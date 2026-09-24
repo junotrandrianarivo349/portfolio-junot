@@ -15,36 +15,51 @@
     "home": "Junot Randrianarivo, retour en haut"
   },
   "nav": {
-    "featured": "Démo",
     "about": "À propos",
     "skills": "Compétences",
-    "projects": "Projets",
-    "experience": "Expérience",
+    "projects": "Études de cas",
+    "experience": "Parcours",
     "contact": "Contact"
   },
   "hero": {
     "name": "Junot Randrianarivo",
     "title": "Développeur Full-Stack JavaScript {'|'} Vue.js · NestJS · Flutter",
-    "tagline": "Je conçois des applications web et mobiles et je les mène jusqu'en production : serveurs Linux, Docker, CI/CD.",
-    "ctaProjects": "Voir mes projets",
-    "ctaContact": "Me contacter",
+    "tagline": "Je conçois des applications web et mobiles et je les mets en production, y compris des applications qui continuent de fonctionner quand le réseau coupe.",
+    "ctaProjects": "Voir les études de cas",
+    "ctaContact": "M'écrire un email",
     "photoAlt": "Portrait de Junot Randrianarivo en costume bleu",
-    "pipelineLabel": "Ma façon de travailler : du code à la production",
-    "pipeline": {
-      "code": "Code",
-      "build": "Build",
-      "deploy": "Déploiement",
-      "live": "En ligne"
-    }
-  },
-  "featured": {
-    "title": "Démo open source",
-    "status": "Bientôt disponible",
-    "heading": "Une application de démonstration complète, avec son code",
-    "text": "Mes projets clients sont confidentiels, alors je construis une application de démonstration publique. Elle sera disponible ici, en ligne, avec son code source sur GitHub.",
-    "demo": "Voir la démo",
-    "code": "Voir le code",
-    "unavailable": "Pas encore disponible"
+    "facts": {
+      "location": "Madagascar, GMT+3",
+      "remote": "Disponible en remote",
+      "language": "Malgache, français et anglais"
+    },
+    "demo": {
+      "title": "Essayez : un formulaire d'adhésion qui fonctionne hors ligne",
+      "caption": "Données fictives. e-famenoPlus fonctionne ainsi : les agents inscrivent les membres sur tablette et synchronisent au retour du réseau.",
+      "app": "Nouvelle adhésion",
+      "member": "Membre",
+      "commune": "Commune",
+      "save": "Enregistrer l'adhésion",
+      "queueFull": "File pleine. Rétablissez le réseau pour synchroniser.",
+      "network": "Réseau",
+      "networkOn": "connecté",
+      "networkOff": "coupé",
+      "status": {
+        "synced": "Synchronisé",
+        "syncing": "Synchronisation…",
+        "pending": "En attente de réseau : {n} adhésion | En attente de réseau : {n} adhésions"
+      },
+      "pendingList": "Stockées sur l'appareil",
+      "syncedList": "Envoyées au serveur",
+      "pendingItem": "en attente",
+      "syncedItem": "synchronisée",
+      "offline": "Hors ligne",
+      "hint1": "Enregistrez une adhésion.",
+      "hint2": "Coupez le réseau et recommencez.",
+      "sendingItem": "envoi…"
+    },
+    "role": "Développeur Full-Stack JavaScript",
+    "stack": "Vue.js · NestJS · Flutter"
   },
   "about": {
     "title": "À propos",
@@ -68,7 +83,7 @@
       },
       "devops": {
         "title": "Docker & CI/CD",
-        "text": "Conteneurs Docker et pipelines GitHub Actions : chaque modification est construite et vérifiée automatiquement."
+        "text": "Conteneurs Docker et pipelines CI/CD avec GitHub Actions."
       },
       "offline": {
         "title": "Offline-first (PowerSync)",
@@ -95,42 +110,71 @@
     }
   },
   "projects": {
-    "title": "Projets clients",
-    "intro": "Des projets réels, en production ou en cours. Le code et les données appartiennent aux clients : pas de captures d'écran ici.",
-    "problem": "Problème résolu",
-    "role": "Mon rôle",
-    "stack": "Stack",
+    "title": "Études de cas",
+    "intro": "Des projets clients réels. Le code et les données appartiennent aux clients : les illustrations utilisent des données fictives.",
+    "labels": {
+      "problem": "Le problème",
+      "built": "Ce que j'ai construit",
+      "role": "Mon rôle",
+      "status": "Statut",
+      "stack": "Stack"
+    },
+    "caption": "Illustration : interface et données fictives.",
+    "captionConfidential": "Illustration aux données fictives. Le code et les données réels sont confidentiels.",
     "items": {
       "efameno": {
         "client": "Mutuelle de santé Harena (SMMEC Madagascar)",
-        "status": "Xonobox — contrat direct Mutuelle Harena (SMMEC), sprint 2 en cours, sprint 3 demandé par le client",
-        "problem": "Digitaliser l'adhésion des membres et le remboursement des paiements de la mutuelle : une application Android pour les agents sur le terrain et une application web d'administration.",
-        "role": "Fondateur et développeur chez Xonobox. D'abord engagé par PSI Madagascar (avril 2024 – janvier 2025), puis sous contrat direct avec la mutuelle.",
-        "trust": "Après la première phase, le client a choisi de poursuivre directement avec Xonobox, sans intermédiaire, et a déjà demandé un troisième sprint.",
-        "sprintsLabel": "Feuille de route du contrat direct",
+        "problem": "La mutuelle devait enregistrer les adhésions et gérer les remboursements dans des zones rurales où le réseau est faible.",
+        "built": "Une application Android pour les agents de terrain, qui fonctionne hors ligne sur tablette et se synchronise via Internet quand le réseau revient, et une application web d'administration pour la mutuelle.",
+        "role": "Fondateur et développeur chez Xonobox.",
+        "status": "Contrat direct avec la Mutuelle Harena : sprint 2 en cours, sprint 3 demandé par le client.",
+        "alt": "Le formulaire d'adhésion hors ligne sur la tablette d'un agent de terrain, et le tableau de bord de recouvrement et de remboursement de la mutuelle.",
+        "pathTitle": "De sous-traitant à contrat direct",
+        "phase1": "Phase 1 : engagé par PSI Madagascar",
+        "phase1Date": "avril 2024 – janvier 2025",
+        "phase2": "Phase 2 : la mutuelle a choisi de poursuivre directement avec Xonobox, sans intermédiaire",
         "sprints": {
-          "s1": { "name": "Sprint 1", "state": "Livré", "text": "Gestion complète des adhésions des membres" },
-          "s2": { "name": "Sprint 2", "state": "En cours", "text": "Gestion des prestataires, tableau de bord de recouvrement et de remboursement" },
-          "s3": { "name": "Sprint 3", "state": "Demandé par le client", "text": "Gestion financière de la mutuelle" }
-        }
+          "s1": {
+            "name": "Sprint 1",
+            "state": "Livré",
+            "text": "Gestion des adhésions des membres"
+          },
+          "s2": {
+            "name": "Sprint 2",
+            "state": "En cours",
+            "text": "Prestataires, tableau de bord de recouvrement et de remboursement"
+          },
+          "s3": {
+            "name": "Sprint 3",
+            "state": "Demandé par le client",
+            "text": "Gestion financière de la mutuelle"
+          }
+        },
+        "phase1Done": "Livré : digitalisation de l'adhésion des membres et du remboursement des paiements, avec une application Android pour les agents de terrain et une application web d'administration."
       },
       "carheav": {
         "client": "Client local",
-        "status": "Xonobox — démo validée, production en préparation",
-        "problem": "Une plateforme VTC : une application passager, une application chauffeur et un back-office web pour gérer les courses, les utilisateurs et les véhicules.",
-        "role": "Réalisé chez Xonobox : les deux applications mobiles Flutter, le back-office Vue.js et l'API REST NestJS."
+        "problem": "Un client local avait besoin d'une plateforme VTC complète.",
+        "built": "Une application passager, une application chauffeur et un back-office web pour gérer les courses, les utilisateurs et les véhicules.",
+        "role": "Réalisé chez Xonobox : applications mobiles Flutter, back-office Vue.js, API REST NestJS.",
+        "status": "Démo validée par le client, mise en production en préparation.",
+        "alt": "Une application passager avec un trajet sur une carte, une application chauffeur avec une demande de course, et un back-office listant courses, utilisateurs et véhicules."
       },
       "pharmaplus": {
-        "client": "PSI Madagascar",
-        "status": "Projet d'entreprise (Sunsoft-Sunrise) — confidentiel",
-        "problem": "La gestion des ventes et du stock pour les dépôts de médicaments.",
-        "role": "Développement et maintenance de l'application mobile Android et de l'application web Symfony."
+        "client": "PSI Madagascar, chez Sunsoft-Sunrise",
+        "problem": "Les dépôts de médicaments devaient suivre leurs ventes et leur stock.",
+        "built": "Une application mobile Android et une application web de gestion des ventes et du stock.",
+        "role": "Développement et maintenance des deux applications.",
+        "status": "Projet d'entreprise. Code et données confidentiels.",
+        "alt": "Un tableau de stock de dépôt avec alertes de stock bas et de péremption, et un panier de vente rapide sur téléphone."
       },
       "datapharm": {
-        "client": "PSI Madagascar",
-        "status": "Projet d'entreprise (Sunsoft-Sunrise) — confidentiel",
-        "problem": "Une application web qui centralise la gestion des médicaments des pharmacies à Madagascar.",
-        "role": "Développement front-end et back-end."
+        "client": "PSI Madagascar, chez Sunsoft-Sunrise",
+        "problem": "Les pharmacies de Madagascar avaient besoin d'un seul endroit pour gérer leurs médicaments.",
+        "built": "Une application web qui centralise la gestion des médicaments des pharmacies.",
+        "role": "Développement front-end et back-end.",
+        "status": "Projet d'entreprise. Code et données confidentiels.",
+        "alt": "Des pharmacies reliées à un référentiel central de médicaments."
       }
     }
   },
@@ -152,9 +196,17 @@
       }
     },
     "education": {
-      "licence": { "degree": "Licence en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
-      "dts": { "degree": "DTS en Programmation", "school": "Institut de Formation Technique (IFT), Antananarivo" },
-      "bac": { "degree": "Baccalauréat Série C" }
+      "licence": {
+        "degree": "Licence en Programmation",
+        "school": "Institut de Formation Technique (IFT), Antananarivo"
+      },
+      "dts": {
+        "degree": "DTS en Programmation",
+        "school": "Institut de Formation Technique (IFT), Antananarivo"
+      },
+      "bac": {
+        "degree": "Baccalauréat Série C"
+      }
     }
   },
   "contact": {
@@ -165,10 +217,13 @@
     "whatsappMessage": "Bonjour Junot, je vous contacte depuis votre portfolio.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "cv": "Télécharger mon CV (PDF)",
+    "cv": "Télécharger mon CV",
     "cvFile": "/cv-fr.pdf",
     "copy": "Copier l'adresse email",
-    "copied": "Adresse email copiée"
+    "copied": "Adresse email copiée",
+    "emailCta": "M'écrire un email",
+    "cvMeta": "PDF, 209 Ko",
+    "copyFail": "Copie impossible. Utilisez le lien email."
   },
   "footer": {
     "rights": "© {year} Junot Randrianarivo",

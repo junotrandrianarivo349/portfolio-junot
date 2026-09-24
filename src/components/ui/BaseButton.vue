@@ -42,15 +42,15 @@ withDefaults(
   @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-[0.95rem] font-semibold transition-colors;
 }
 .btn-primary {
-  @apply bg-accent text-on-accent;
+  @apply bg-cyan text-on-cyan;
 }
 .btn-primary:not(:disabled):hover {
-  @apply bg-cyan-300;
+  filter: brightness(1.1);
 }
 .btn-ghost {
   @apply border border-line text-fg;
 }
 .btn-ghost:not(:disabled):hover {
-  @apply border-accent-ink text-accent-ink;
+  @apply border-cyan-ink text-cyan-ink;
 }
 </style>
