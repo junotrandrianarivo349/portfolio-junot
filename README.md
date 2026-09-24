@@ -87,6 +87,7 @@ reads the CI and Vercel states from the public GitHub API, so no Vercel token or
 npm run deploy:preview   # checks (lint, types, prerender, Playwright) → push branch → wait CI + Vercel → preview URL
 npm run deploy:prod      # same checks → confirmation → merge into main → push → wait → smoke test + PageSpeed Insights
 npm run deploy:status    # CI and Vercel state of the current commit
+npm run deploy:check     # smoke test + PageSpeed Insights of the live site, without deploying
 ```
 
 Add `-- --skip-tests` to skip Playwright (e.g. `npm run deploy:preview -- --skip-tests`).

@@ -9,6 +9,7 @@
 #   ./scripts/deploy.sh preview [--skip-tests]   checks → push current branch → wait for CI + Vercel → preview URL
 #   ./scripts/deploy.sh prod    [--skip-tests]   checks → confirm → merge into main → push → wait → smoke test + PageSpeed
 #   ./scripts/deploy.sh status                   CI + Vercel state of the current commit
+#   ./scripts/deploy.sh check                    smoke test + PageSpeed of the live site (no deploy)
 set -euo pipefail
 
 REPO="junotrandrianarivo349/portfolio-junot"
@@ -117,19 +118,29 @@ smoke_test() {
     code=$(curl -s -o /dev/null -w '%{http_code}' "$PROD_URL$path")
     [[ "$code" == "200" ]] && ok "$path → 200" || die "$path → $code"
   done
-  curl -fsSL "$PROD_URL/" | grep -q '<html lang="en"' && ok "HTML prérendu (EN)" || die "Le HTML de / n'est pas prérendu"
-  curl -fsSL "$PROD_URL/fr/" | grep -q '<html lang="fr"' && ok "HTML prérendu (FR)" || die "Le HTML de /fr/ n'est pas prérendu"
+  # Download first, then search: piping curl into `grep -q` fails under `pipefail` (grep exits early → curl error 23).
+  local html
+  html=$(curl -fsSL "$PROD_URL/")
+  [[ "$html" == *'<html lang="en"'* ]] && ok "HTML prérendu (EN)" || die "Le HTML de / n'est pas prérendu"
+  html=$(curl -fsSL "$PROD_URL/fr/")
+  [[ "$html" == *'<html lang="fr"'* ]] && ok "HTML prérendu (FR)" || die "Le HTML de /fr/ n'est pas prérendu"
 }
 
 pagespeed() {
   step "PageSpeed Insights (mobile, serveurs Google)"
+  # Google no longer serves keyless requests. Optional free key: export PAGESPEED_API_KEY=...
+  # (Google Cloud console → APIs & Services → Credentials, enable "PageSpeed Insights API").
+  if [[ -z "${PAGESPEED_API_KEY:-}" ]]; then
+    warn "Pas de PAGESPEED_API_KEY : mesure manuelle → https://pagespeed.web.dev/?url=$PROD_URL/"
+    return
+  fi
   local cats="category=PERFORMANCE&category=ACCESSIBILITY&category=BEST_PRACTICES&category=SEO"
-  local page res
+  local page body res
   for page in "/" "/fr/"; do
-    res=$(curl -fsSL --max-time 120 \
-      "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=$PROD_URL$page&strategy=mobile&$cats" 2>/dev/null \
-      | json "Object.values(d.lighthouseResult.categories).map(c=>c.title+' '+Math.round(c.score*100)).join(' | ')" || true)
-    if [[ -n "$res" ]]; then ok "$page  $res"; else warn "$page : PageSpeed indisponible (quota ou délai). Réessayez : https://pagespeed.web.dev/?url=$PROD_URL$page"; fi
+    body=$(curl -sSL --max-time 180 \
+      "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=$PROD_URL$page&strategy=mobile&$cats&key=$PAGESPEED_API_KEY" || true)
+    res=$(printf '%s' "$body" | json "d.lighthouseResult ? Object.values(d.lighthouseResult.categories).map(c=>c.title+' '+Math.round(c.score*100)).join(' | ') : ''" 2>/dev/null || true)
+    if [[ -n "$res" ]]; then ok "$page  $res"; else warn "$page : PageSpeed indisponible. Mesure manuelle : https://pagespeed.web.dev/?url=$PROD_URL$page"; fi
   done
 }
 
@@ -200,5 +211,6 @@ case "${1:-}" in
   preview) cmd_preview "$skip_tests" ;;
   prod)    cmd_prod "$skip_tests" ;;
   status)  cmd_status ;;
-  *) sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+  check)   smoke_test; pagespeed ;;
+  *) sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac
