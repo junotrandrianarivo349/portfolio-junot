@@ -7,7 +7,7 @@
 #
 # Usage:
 #   ./scripts/deploy.sh preview [--skip-tests]   checks → push current branch → wait for CI + Vercel → preview URL
-#   ./scripts/deploy.sh prod    [--skip-tests]   checks → confirm → merge into main → push → wait → smoke test + PageSpeed
+#   ./scripts/deploy.sh prod    [--skip-tests] [--yes]   checks → confirm → merge into main → push → wait → smoke test + PageSpeed
 #   ./scripts/deploy.sh status                   CI + Vercel state of the current commit
 #   ./scripts/deploy.sh check                    smoke test + PageSpeed of the live site (no deploy)
 set -euo pipefail
@@ -185,9 +185,13 @@ cmd_prod() {
   fi
   run_checks "$skip_tests"
 
-  printf '\n%sLe site public %s va être mis à jour.%s Continuer ? (oui/non) ' "$bold" "$PROD_URL" "$reset"
-  read -r answer
-  [[ "$answer" == "oui" ]] || die "Annulé. Rien n'a été modifié."
+  if [[ "$assume_yes" == "1" ]]; then
+    warn "Confirmation fournie par --yes"
+  else
+    printf '\n%sLe site public %s va être mis à jour.%s Continuer ? (oui/non) ' "$bold" "$PROD_URL" "$reset"
+    read -r answer
+    [[ "$answer" == "oui" ]] || die "Annulé. Rien n'a été modifié."
+  fi
 
   if [[ "$branch" != "$MAIN_BRANCH" ]]; then
     git push -u origin "$branch"
@@ -205,7 +209,14 @@ cmd_prod() {
 }
 
 skip_tests=0
-[[ "${2:-}" == "--skip-tests" ]] && skip_tests=1
+assume_yes=0
+for arg in "${@:2}"; do
+  case "$arg" in
+    --skip-tests) skip_tests=1 ;;
+    --yes) assume_yes=1 ;;   # non-interactive prod (only after the owner confirmed in chat)
+    *) die "Option inconnue : $arg" ;;
+  esac
+done
 
 case "${1:-}" in
   preview) cmd_preview "$skip_tests" ;;

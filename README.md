@@ -90,7 +90,7 @@ npm run deploy:status    # CI and Vercel state of the current commit
 npm run deploy:check     # smoke test + PageSpeed Insights of the live site, without deploying
 ```
 
-Add `-- --skip-tests` to skip Playwright (e.g. `npm run deploy:preview -- --skip-tests`).
+Add `-- --skip-tests` to skip Playwright (e.g. `npm run deploy:preview -- --skip-tests`) and `-- --yes` to skip the production prompt (used by Claude after an explicit go). Instructions for Claude Code live in `CLAUDE.md` and the `/deploy` skill.
 
 ### First-time setup (Vercel)
 
