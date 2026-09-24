@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:e2e": "playwright test",
-    "lighthouse": "lighthouse http://localhost:4173/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\"--headless=new\" --output=html --output=json --output-path=./.lighthouseci/report --quiet"
+    "lighthouse": "lighthouse http://localhost:4173/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\"--headless=new\" --output=html --output=json --output-path=./.lighthouseci/report --quiet",
+    "deploy:preview": "./scripts/deploy.sh preview",
+    "deploy:prod": "./scripts/deploy.sh prod",
+    "deploy:status": "./scripts/deploy.sh status"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",

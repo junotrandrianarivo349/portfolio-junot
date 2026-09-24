@@ -78,7 +78,21 @@ CV_Junot_Randrianarivo.md  # Single source of truth for the site content
 - Accessibility: semantic landmarks, skip link, visible keyboard focus, `prefers-reduced-motion` respected, WCAG AA contrasts in both themes (checked with axe-core).
 - SEO: localized `<title>` and meta description, `<html lang>` kept in sync, Open Graph image, favicon.
 
-## Deployment (Vercel)
+## Deployment
+
+Vercel deploys automatically on every `git push` (Git integration). `scripts/deploy.sh` wraps the whole flow and
+reads the CI and Vercel states from the public GitHub API, so no Vercel token or dashboard is needed:
+
+```bash
+npm run deploy:preview   # checks (lint, types, prerender, Playwright) → push branch → wait CI + Vercel → preview URL
+npm run deploy:prod      # same checks → confirmation → merge into main → push → wait → smoke test + PageSpeed Insights
+npm run deploy:status    # CI and Vercel state of the current commit
+```
+
+Add `-- --skip-tests` to skip Playwright (e.g. `npm run deploy:preview -- --skip-tests`).
+
+### First-time setup (Vercel)
+
 
 1. Push the repository to GitHub.
 2. On [vercel.com](https://vercel.com), **Add New → Project**, import the repository.
